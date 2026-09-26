@@ -6,6 +6,89 @@
  * prestation, soit une observation de terrain — jamais une statistique inventée.
  */
 
+/* ------------------------------------------------ Hero : les six étapes --- */
+/* Galerie 3D de l'accueil. Chaque visuel est une capture des maquettes de
+   `components/mockups/` (voir public/hero/) : ce sont des démonstrations,
+   aucune ne représente un client. */
+
+export type EtapeHero = {
+  id: string;
+  titre: string;
+  description: string;
+  visuel: { src: string; alt: string };
+  /** Ancre de la page Services qui détaille l'étape. */
+  service: string;
+};
+
+export const etapesHero: EtapeHero[] = [
+  {
+    id: "identite",
+    titre: "Identité",
+    description:
+      "Un logo, une charte et des supports qui parlent d'une seule voix, de la devanture à l'écran du téléphone.",
+    visuel: {
+      src: "/hero/identite.webp",
+      alt: "Démonstration d'une planche de marque : logotype, palette de couleurs et typographie.",
+    },
+    service: "identite",
+  },
+  {
+    id: "site",
+    titre: "Site",
+    description:
+      "Un site rapide, compris en dix secondes, construit pour faire passer à l'action : appeler, venir, réserver.",
+    visuel: {
+      src: "/hero/site.webp",
+      alt: "Démonstration d'un site mobile et de sa fiche d'établissement avec boutons Itinéraire, Appeler et Réserver.",
+    },
+    service: "web",
+  },
+  {
+    id: "reservation",
+    titre: "Réservation",
+    description:
+      "Vos clients choisissent leur créneau en ligne, à toute heure, sans passer par le téléphone.",
+    visuel: {
+      src: "/hero/reservation.webp",
+      alt: "Démonstration d'un module de réservation avec choix du jour et de l'heure, et rappel automatique.",
+    },
+    service: "crm",
+  },
+  {
+    id: "crm",
+    titre: "CRM",
+    description:
+      "Chaque demande arrive au même endroit et se suit jusqu'à la vente. Plus rien ne se perd entre un carnet et WhatsApp.",
+    visuel: {
+      src: "/hero/crm.webp",
+      alt: "Démonstration d'un pipeline commercial en quatre colonnes : nouveau contact, qualifié, devis envoyé, client.",
+    },
+    service: "crm",
+  },
+  {
+    id: "automatisation",
+    titre: "Automatisation",
+    description:
+      "Rappels, relances et demandes d'avis partent tout seuls, au bon moment, sans y penser.",
+    visuel: {
+      src: "/hero/automatisation.webp",
+      alt: "Démonstration d'un scénario automatisé : rendez-vous terminé, attente de 48 h, demande d'avis puis offre fidélité.",
+    },
+    service: "automatisation",
+  },
+  {
+    id: "ia",
+    titre: "IA",
+    description:
+      "Un assistant qui répond à vos clients jour et nuit et qualifie les demandes avant qu'elles ne vous arrivent.",
+    visuel: {
+      src: "/hero/ia.webp",
+      alt: "Démonstration d'une conversation avec l'assistant Jawabot.",
+    },
+    service: "ia",
+  },
+];
+
 /* ------------------------------------------------------------- Services --- */
 
 export type Service = {

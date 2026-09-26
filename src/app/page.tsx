@@ -9,18 +9,16 @@ import {
   ArrowIcon,
 } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
-import { Entree } from "@/components/ui/Entree";
 import { Faq } from "@/components/ui/Faq";
 import {
   Sparkle,
   HaloOr,
   TrameOr,
-  TraineeOr,
   FiletOr,
   PastilleOr,
 } from "@/components/brand/Motifs";
 import { BrandIcon, iconeParService } from "@/components/brand/Icons";
-import { SystemDiagram } from "@/components/mockups/SystemDiagram";
+import { HeroGalerie } from "@/components/hero/HeroGalerie";
 import { BrandSheet } from "@/components/mockups/BrandSheet";
 import { PhoneSite } from "@/components/mockups/PhoneSite";
 import { BookingWidget } from "@/components/mockups/BookingWidget";
@@ -48,76 +46,8 @@ export default function Home() {
   return (
     <>
       {/* ═══════════════════════════════════════════════════════ 1. HERO ═══ */}
-      <section className="relative overflow-hidden pb-20 pt-32 sm:pt-40 lg:pb-28">
-        <TrameOr />
-        <HaloOr className="-left-40 -top-40" size={640} />
-        <TraineeOr className="absolute inset-x-0 top-10 h-[420px] w-full opacity-70" />
-
-        <Container className="relative">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
-            <div>
-              <Entree>
-                <p className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-plomb-clair">
-                  {site.domaines.map((d, i) => (
-                    <span key={d} className="flex items-center gap-3">
-                      {i > 0 ? (
-                        <Sparkle className="h-2 w-1.5 text-or" />
-                      ) : null}
-                      {d}
-                    </span>
-                  ))}
-                </p>
-              </Entree>
-
-              <Entree delay={0.06}>
-                <h1 className="h-display text-[clamp(2.3rem,5.4vw,4.3rem)] text-blanc">
-                  De la première vue
-                  <br />
-                  à la <span className="mot-or">première vente.</span>
-                </h1>
-              </Entree>
-
-              <Entree delay={0.12}>
-                <p className="mt-7 max-w-[54ch] text-[clamp(1.02rem,1.35vw,1.2rem)] leading-relaxed text-plomb-clair">
-                  {site.promesse} Image de marque, présence digitale, CRM,
-                  automatisations et solutions intelligentes — assemblés selon
-                  votre activité.
-                </p>
-              </Entree>
-
-              <Entree delay={0.18}>
-                <div className="mt-9 flex flex-wrap gap-3">
-                  <Button href="/contact" size="lg">
-                    {site.cta.primary}
-                    <ArrowIcon />
-                  </Button>
-                  <Button href="/services" variant="outline" size="lg">
-                    {site.cta.secondary}
-                  </Button>
-                </div>
-              </Entree>
-
-              <Entree delay={0.24}>
-                <p className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-plomb-clair">
-                  <span>France</span>
-                  <span aria-hidden="true" className="text-or">
-                    ·
-                  </span>
-                  <span>Belgique</span>
-                  <span aria-hidden="true" className="text-or">
-                    ·
-                  </span>
-                  <span>Solutions sur mesure</span>
-                </p>
-              </Entree>
-            </div>
-
-            <Entree delay={0.14}>
-              <SystemDiagram />
-            </Entree>
-          </div>
-        </Container>
-      </section>
+      {/* Galerie 3D : présentation puis les six étapes, avant le reste du site. */}
+      <HeroGalerie />
 
       <FiletOr />
 

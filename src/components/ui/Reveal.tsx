@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ElementType, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 /**
  * Apparition au défilement, déclenchée une seule fois.
@@ -21,10 +21,13 @@ export function Reveal({
   children: ReactNode;
   /** Décalage en secondes, pour échelonner une série d'éléments. */
   delay?: number;
-  as?: ElementType;
+  /* Liste fermée plutôt que `ElementType` : React Three Fiber ajoute ses
+     éléments 3D aux types JSX globaux, ce qui rend `ElementType` inutilisable. */
+  as?: "div" | "li" | "article" | "section";
   className?: string;
 }) {
-  const ref = useRef<HTMLElement>(null);
+  // Intersection : la même ref doit convenir à chacune des balises possibles.
+  const ref = useRef<HTMLDivElement & HTMLLIElement>(null);
 
   useEffect(() => {
     const el = ref.current;

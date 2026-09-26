@@ -225,6 +225,110 @@ body {
   }
 }
 
+/* ------------------------------------------------ Hero : galerie 3D ------ */
+/* Mode immersif (par défaut) : la scène est collée en fond, les blocs de texte
+   — un écran chacun — remontent par-dessus. Mode statique (pas de JS,
+   mouvements réduits, pas de WebGL) : flux normal, visuels en images. */
+
+.galerie-pistes {
+  margin-top: -100svh;
+}
+.galerie-bloc {
+  min-height: 100svh;
+}
+.galerie-visuel {
+  /* En immersif, l'image n'est là que pour les lecteurs d'écran. */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+@keyframes indice {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(330%);
+  }
+}
+
+/* Fondu des textes d'étape au passage, piloté par le défilement lui-même
+   (sans JavaScript). Navigateurs sans cette API : textes simplement visibles. */
+@supports (animation-timeline: view()) {
+  .galerie[data-mode="immersif"] .galerie-texte {
+    animation: galerie-texte linear both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 95%;
+  }
+}
+@keyframes galerie-texte {
+  0% {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  30%,
+  70% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-48px);
+  }
+}
+
+html:not(.js) .galerie-scene,
+.galerie[data-mode="statique"] .galerie-scene {
+  display: none;
+}
+html:not(.js) .galerie-pistes,
+.galerie[data-mode="statique"] .galerie-pistes {
+  margin-top: 0;
+  padding-top: 5rem;
+}
+html:not(.js) .galerie-bloc,
+.galerie[data-mode="statique"] .galerie-bloc {
+  min-height: 0;
+  padding-block: 4rem;
+  scroll-margin-top: 4rem;
+}
+html:not(.js) .galerie-indice,
+.galerie[data-mode="statique"] .galerie-indice {
+  display: none;
+}
+html:not(.js) .galerie-visuel,
+.galerie[data-mode="statique"] .galerie-visuel {
+  position: static;
+  width: 100%;
+  height: auto;
+  clip-path: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galerie-scene {
+    display: none;
+  }
+  .galerie-pistes {
+    margin-top: 0;
+    padding-top: 5rem;
+  }
+  .galerie-bloc {
+    min-height: 0;
+    padding-block: 4rem;
+  }
+  .galerie-indice {
+    display: none;
+  }
+  .galerie-visuel {
+    position: static;
+    width: 100%;
+    height: auto;
+    clip-path: none;
+  }
+}
+
 /* ------------------------------------------------------- Accessibilité ---- */
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,4 +1,4 @@
-import type { CSSProperties, ElementType, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Apparition au chargement, pour le haut de page.
@@ -20,7 +20,9 @@ export function Entree({
   children: ReactNode;
   /** Décalage en secondes, pour échelonner une série d'éléments. */
   delay?: number;
-  as?: ElementType;
+  /* Liste fermée plutôt que `ElementType` : React Three Fiber ajoute ses
+     éléments 3D aux types JSX globaux, ce qui rend `ElementType` inutilisable. */
+  as?: "div" | "li" | "article" | "section";
   className?: string;
 }) {
   return (

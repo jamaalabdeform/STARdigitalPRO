@@ -4,8 +4,9 @@ Site commercial de STAR DIGI PRO, partenaire digital 360° pour les TPE, PME et
 commerces en France et en Belgique.
 
 Construit avec **Next.js 16** (App Router, Turbopack), **TypeScript** et
-**Tailwind CSS v4**. Aucune librairie d'animation, aucun composant tiers : tout
-ce qui est affiché est écrit dans ce dépôt.
+**Tailwind CSS v4**. Seule dépendance d'affichage : **three.js** via
+**React Three Fiber**, pour la galerie 3D du hero d'accueil. Aucune librairie
+d'animation, aucun kit de composants : tout le reste est écrit dans ce dépôt.
 
 ---
 
@@ -94,7 +95,8 @@ src/
     globals.css             design system (tokens Tailwind v4)
   components/
     site/                   Header, Footer, Logo
-    ui/                     primitives, Reveal, Faq, ContactForm
+    ui/                     primitives, Reveal, Entree, Faq, ContactForm
+    hero/                   galerie 3D de l'accueil (HeroGalerie, GalerieScene)
     mockups/                les interfaces de démonstration
   lib/
     site.ts                 marque, navigation, coordonnées
@@ -114,6 +116,31 @@ utilitaires automatiquement.
 
 Palette, typographie (**Plus Jakarta Sans**) et règles de contraste : voir
 **`BRAND.md`**, qui fait référence.
+
+---
+
+## Hero d'accueil : galerie 3D
+
+Adapté du modèle v0 « 3D Gallery Photography » (plans d'images en profondeur,
+flou de mise au point, effet tissu au défilement). Le hero présente STAR DIGI
+PRO, puis les six étapes — Identité, Site, Réservation, CRM, Automatisation,
+IA — chacune avec un visuel, un titre et une courte description.
+
+- **Défilement natif.** La scène WebGL est collée en fond (`sticky`) et la
+  caméra avance d'une étape par écran défilé. La molette n'est pas
+  interceptée : clavier, doigt et souris fonctionnent normalement, et le reste
+  du site reprend après la sixième étape.
+- **Contenu :** `etapesHero` dans `src/lib/content.ts`. Tout le texte est du
+  HTML rendu côté serveur (indexable, lisible sans JavaScript).
+- **Visuels :** `public/hero/*.webp`, captures des maquettes de
+  `components/mockups/` sur fond transparent. Si une maquette change,
+  recapturez-la pour que le hero reste cohérent.
+- **Performance :** three.js (~850 Ko non compressés) n'est chargé qu'à la
+  première interaction (défilement, souris, doigt, clavier). Le premier
+  affichage n'en dépend pas ; le rendu s'arrête quand le hero sort de l'écran.
+- **Repli statique** (pas de JavaScript, `prefers-reduced-motion`, ou WebGL
+  indisponible) : pas de scène, les six étapes s'affichent en flux normal avec
+  leur visuel en image.
 
 ---
 
@@ -174,7 +201,7 @@ Ces modules sont étiquetés « Démonstration » partout où ils apparaissent.
 
   | Page | Perf. | Access. | Bonnes pratiques | SEO |
   |---|---|---|---|---|
-  | `/` | 98 | 100 | 100 | 100 |
+  | `/` (avec galerie 3D) | 95 | 100 | 100 | 100 |
   | `/services` | 99 | 100 | 100 | 100 |
   | `/realisations` | 99 | 100 | 100 | 100 |
   | `/a-propos` | 100 | 100 | 100 | 100 |
