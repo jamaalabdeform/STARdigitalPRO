@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   STAR DIGI PRO — système de design
+   Source : « Guide de marque premium Star Digi Pro » (charte fournie).
+   Tailwind v4 : les tokens se déclarent en CSS dans @theme, il n'existe plus de
+   tailwind.config.js. Chaque token génère ses utilitaires (--color-or produit
+   bg-or, text-or, border-or, fill-or…).
+   ============================================================================ */
+
+@theme {
+  /* --- Socle charte ------------------------------------------------------ */
+  --color-noir: #0b0b0d; /* Noir Profond — confiance, élégance */
+  --color-anthracite: #1f1f24; /* Gris Anthracite — sérénité, professionnalisme */
+  --color-anthracite-2: #2c2c33; /* filets et séparateurs sur fond sombre */
+  --color-blanc: #ffffff; /* Blanc Pur — clarté, lisibilité */
+  --color-gris: #f5f6f8; /* Gris Clair — équilibre, arrière-plan */
+  --color-gris-2: #e7e9ee; /* variante creusée du gris clair */
+
+  /* --- Or : accent principal de la marque -------------------------------- */
+  --color-or: #d4af37; /* Or Premium — valeur, premium, croissance */
+  --color-or-clair: #e8c868; /* survols et reflets */
+  --color-or-sombre: #a8862a; /* texte or sur fond clair, contraste suffisant */
+  --color-or-voile: #faf3df; /* aplat très clair pour zones de confirmation */
+
+  /* --- Accents fonctionnels ---------------------------------------------- */
+  --color-bleu: #3b82f6; /* Digital, technologie, modernité */
+  --color-vert: #10b981; /* Conversion, succès, croissance */
+  --color-alerte: #e5484d; /* erreurs de formulaire — hors charte, rôle technique */
+
+  /* --- Gris de texte ------------------------------------------------------ */
+  --color-plomb: #70757e; /* texte secondaire sur fond clair */
+  --color-plomb-clair: #9aa0aa; /* texte secondaire sur fond sombre */
+
+  /* --- Typographie : Plus Jakarta Sans, imposée par la charte ------------- */
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------------------------------------------------------------- Base ---- */
+
+:root {
+  color-scheme: dark;
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+/* Couleur de bordure par défaut, pour que `border` seul trace un filet discret.
+   Impérativement dans @layer base : hors couche, cette règle l'emporterait sur
+   toutes les couches Tailwind et écraserait chaque utilitaire `border-*`. */
+@layer base {
+  * {
+    border-color: color-mix(in srgb, var(--color-blanc) 12%, transparent);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-noir);
+  color: var(--color-blanc);
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-or);
+  color: var(--color-noir);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-or);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------- Typographie ---- */
+
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+.h-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.024em;
+  line-height: 1.12;
+}
+
+/* Surlignage or d'un fragment de titre — la marque met l'or sur le mot clé,
+   comme « PRO » dans le logotype. */
+.mot-or {
+  color: var(--color-or);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Sections claires posées dans un site à dominante sombre. */
+.sec-claire {
+  background: var(--color-gris);
+  color: var(--color-noir);
+}
+
+/* ------------------------------------------------------- Motifs de marque -- */
+
+/* Filet doré : séparateur horizontal qui s'éteint sur les bords. */
+.filet-or {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-or) 22%,
+    var(--color-or) 78%,
+    transparent
+  );
+  opacity: 0.55;
+}
+
+/* Halo doré diffus, posé derrière les blocs de mise en avant. */
+.halo-or {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--color-or) 30%, transparent) 0%,
+    transparent 68%
+  );
+  filter: blur(46px);
+}
+
+/* Champ de particules dorées — motif vectoriel, pas une image. */
+.trame-or {
+  background-image: radial-gradient(
+    var(--color-or) 0.9px,
+    transparent 0.9px
+  );
+  background-size: 16px 16px;
+  opacity: 0.16;
+}
+
+/* Liseré doré sur le bord supérieur d'une carte, au survol. */
+.carte-or {
+  position: relative;
+  transition: border-color 0.45s var(--ease-soft);
+}
+.carte-or::before {
+  content: "";
+  position: absolute;
+  inset: -1px -1px auto;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-or),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-soft);
+}
+.carte-or:hover::before {
+  opacity: 1;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.no-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* -------------------------------------------------- Apparitions au scroll --- */
+/* Une seule fois, jamais de rejeu. L'état masqué dépend de la classe `js` posée
+   sur <html> : si le script ne s'exécute pas, rien n'est caché. */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.js .reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.85s var(--ease-soft) var(--reveal-delay, 0s),
+    transform 0.85s var(--ease-soft) var(--reveal-delay, 0s);
+}
+
+/* ------------------------------------------------------- Accessibilité ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
