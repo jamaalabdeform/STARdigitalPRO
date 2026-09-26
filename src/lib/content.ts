@@ -72,7 +72,7 @@ export const etapesHero: EtapeHero[] = [
       "Rappels, relances et demandes d'avis partent tout seuls, au bon moment, sans y penser.",
     visuel: {
       src: "/hero/automatisation.webp",
-      alt: "Démonstration d'un scénario automatisé : rendez-vous terminé, attente de 48 h, demande d'avis puis offre fidélité.",
+      alt: "Démonstration d'un scénario automatisé : rendez-vous terminé, attente de 48 h, demande d'avis par SMS ou WhatsApp, offre fidélité par e-mail, et notification de remerciement sur mobile.",
     },
     service: "automatisation",
   },
