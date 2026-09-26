@@ -69,10 +69,10 @@ CSS — **il n'y a pas de `tailwind.config.js`**.
 | `gris` | `#F5F6F8` | Équilibre, arrière-plan | `bg-gris` |
 | **`or`** | **`#D4AF37`** | **Valeur, premium, croissance** | `text-or` `bg-or` |
 | `or-clair` | `#E8C868` | Survols, reflets | `hover:bg-or-clair` |
-| `or-sombre` | `#A8862A` | **Or sur fond clair** | `text-or-sombre` |
+| `or-sombre` | `#80641B` | **Or sur fond clair** | `text-or-sombre` |
 | `bleu` | `#3B82F6` | Digital, technologie | `text-bleu` |
 | `vert` | `#10B981` | Conversion, succès | `text-vert` |
-| `plomb` / `plomb-clair` | `#70757E` / `#9AA0AA` | Textes secondaires | `text-plomb-clair` |
+| `plomb` / `plomb-clair` | `#62676F` / `#9AA0AA` | Textes secondaires : `plomb` sur fond clair, `plomb-clair` sur fond sombre | `text-plomb` `text-plomb-clair` |
 
 ### Règles de contraste — non négociables
 
@@ -85,6 +85,12 @@ Ces trois règles viennent d'un audit de contraste automatisé qui a relevé
    blanc tombe également à 2,1:1.
 3. **L'or pur (`or`) est réservé** aux fonds sombres et aux aplats non textuels
    (pastilles, filets, points d'état).
+4. **Sur fond sombre, le gris de texte est `plomb-clair`**, jamais `plomb`
+   (3,4:1 sur `noir`). `plomb` est réservé aux fonds clairs, où il tient
+   4,5:1 jusque sur `gris-2`.
+
+`or-sombre` et `plomb` ont été assombris (depuis `#A8862A` et `#70757E`) après
+un second audit axe : ils passaient sur blanc mais pas sur `gris` / `gris-2`.
 
 Un script d'audit réutilisable est décrit au § 9.
 

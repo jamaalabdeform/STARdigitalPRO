@@ -20,7 +20,7 @@
   /* --- Or : accent principal de la marque -------------------------------- */
   --color-or: #d4af37; /* Or Premium — valeur, premium, croissance */
   --color-or-clair: #e8c868; /* survols et reflets */
-  --color-or-sombre: #a8862a; /* texte or sur fond clair, contraste suffisant */
+  --color-or-sombre: #80641b; /* texte or sur fond clair — ≥ 4.5:1 jusque sur gris-2 */
   --color-or-voile: #faf3df; /* aplat très clair pour zones de confirmation */
 
   /* --- Accents fonctionnels ---------------------------------------------- */
@@ -29,7 +29,7 @@
   --color-alerte: #e5484d; /* erreurs de formulaire — hors charte, rôle technique */
 
   /* --- Gris de texte ------------------------------------------------------ */
-  --color-plomb: #70757e; /* texte secondaire sur fond clair */
+  --color-plomb: #62676f; /* texte secondaire sur fond clair — ≥ 4.5:1 jusque sur gris-2 */
   --color-plomb-clair: #9aa0aa; /* texte secondaire sur fond sombre */
 
   /* --- Typographie : Plus Jakarta Sans, imposée par la charte ------------- */
@@ -209,6 +209,20 @@ body {
   transition:
     opacity 0.85s var(--ease-soft) var(--reveal-delay, 0s),
     transform 0.85s var(--ease-soft) var(--reveal-delay, 0s);
+}
+
+/* Apparition au chargement (haut de page) : CSS pur, sans attendre le script.
+   Le fondu part de 0.01 et non de 0 : un élément à opacité nulle n'est pas
+   comptabilisé comme peint, ce qui repousserait le LCP à la fin de l'animation. */
+.entree {
+  animation: entree 0.85s var(--ease-soft) var(--reveal-delay, 0s) both;
+}
+
+@keyframes entree {
+  from {
+    opacity: 0.01;
+    transform: translateY(14px);
+  }
 }
 
 /* ------------------------------------------------------- Accessibilité ---- */

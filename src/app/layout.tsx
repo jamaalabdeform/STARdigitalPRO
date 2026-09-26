@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     url: site.url,
     title: `${site.name} — ${site.baseline}`,
     description: site.description,
-    images: [{ url: "/brand/icon-dark.png", width: 192, height: 184 }],
+    // Image : src/app/opengraph-image.tsx (convention de fichier Next.js).
   },
   twitter: {
     card: "summary_large_image",

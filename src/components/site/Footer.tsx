@@ -15,7 +15,7 @@ export function Footer() {
             <p className="mt-6 max-w-[34ch] text-[14.5px] leading-relaxed text-plomb-clair">
               {site.baseline}
             </p>
-            <p className="mt-5 text-[13px] text-plomb">
+            <p className="mt-5 text-[13px] text-plomb-clair">
               {site.markets.join(" · ")}
             </p>
           </div>
@@ -85,7 +85,7 @@ function FooterCol({
 }) {
   return (
     <div>
-      <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-plomb">
+      <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-plomb-clair">
         {title}
       </p>
       <ul className="flex flex-col gap-2.5">{children}</ul>

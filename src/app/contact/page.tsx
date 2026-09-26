@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container, Eyebrow } from "@/components/ui/primitives";
-import { Reveal } from "@/components/ui/Reveal";
+import { Entree } from "@/components/ui/Entree";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { site } from "@/lib/site";
 
@@ -33,22 +33,22 @@ export default function ContactPage() {
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           {/* Colonne explicative */}
           <div className="min-w-0">
-            <Reveal>
+            <Entree>
               <Eyebrow>Contact</Eyebrow>
-            </Reveal>
-            <Reveal delay={0.06}>
+            </Entree>
+            <Entree delay={0.06}>
               <h1 className="h-display max-w-[14ch] text-[clamp(2.2rem,4.6vw,3.5rem)] text-blanc">
                 Demander un audit.
               </h1>
-            </Reveal>
-            <Reveal delay={0.12}>
+            </Entree>
+            <Entree delay={0.12}>
               <p className="mt-6 max-w-[46ch] text-[16px] leading-relaxed text-plomb-clair">
                 Gratuit et sans engagement. L&apos;objectif est de vous donner un
                 avis utile, pas de vous vendre le maximum de prestations.
               </p>
-            </Reveal>
+            </Entree>
 
-            <Reveal delay={0.18}>
+            <Entree delay={0.18}>
               <ol className="mt-10 border-t border-blanc/15">
                 {etapes.map((e, i) => (
                   <li
@@ -69,11 +69,11 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ol>
-            </Reveal>
+            </Entree>
 
-            <Reveal delay={0.24}>
+            <Entree delay={0.24}>
               <div className="mt-10 space-y-2 text-[14px] text-plomb-clair">
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-plomb">
+                <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-plomb-clair">
                   Zones d&apos;intervention
                 </p>
                 <p>{site.markets.join(" · ")}</p>
@@ -100,15 +100,15 @@ export default function ContactPage() {
                   </p>
                 ) : null}
               </div>
-            </Reveal>
+            </Entree>
           </div>
 
           {/* Formulaire */}
-          <Reveal delay={0.1} className="min-w-0">
+          <Entree delay={0.1} className="min-w-0">
             <div className="min-w-0 rounded-3xl border border-blanc/12 bg-blanc p-7 shadow-[0_28px_70px_-46px_rgba(14,17,22,0.45)] sm:p-9">
               <ContactForm />
             </div>
-          </Reveal>
+          </Entree>
         </div>
       </Container>
     </section>

@@ -8,6 +8,7 @@ import {
   ArrowIcon,
 } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
+import { Entree } from "@/components/ui/Entree";
 import { BrandSheet } from "@/components/mockups/BrandSheet";
 import { PhoneSite } from "@/components/mockups/PhoneSite";
 import { BookingWidget } from "@/components/mockups/BookingWidget";
@@ -73,15 +74,15 @@ export default function RealisationsPage() {
     <>
       <section className="pb-14 pt-32 sm:pt-40">
         <Container>
-          <Reveal>
+          <Entree>
             <Eyebrow>Réalisations</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.06}>
+          </Entree>
+          <Entree delay={0.06}>
             <h1 className="h-display max-w-[19ch] text-[clamp(2.2rem,5vw,3.9rem)] text-blanc">
               Démonstrations et concepts.
             </h1>
-          </Reveal>
-          <Reveal delay={0.12}>
+          </Entree>
+          <Entree delay={0.12}>
             <div className="mt-7 max-w-[62ch] space-y-4 text-[clamp(1rem,1.3vw,1.16rem)] leading-relaxed text-plomb-clair">
               <p>
                 Les modules présentés ici sont construits en code et fonctionnent
@@ -95,7 +96,7 @@ export default function RealisationsPage() {
                 concernés seront en ligne et les accords obtenus.
               </p>
             </div>
-          </Reveal>
+          </Entree>
         </Container>
       </section>
 
@@ -116,7 +117,7 @@ export default function RealisationsPage() {
                   <Reveal>
                     <div>
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-plomb">
+                        <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-plomb-clair">
                           {d.kind}
                         </span>
                         <Pill tone="or">Démonstration</Pill>

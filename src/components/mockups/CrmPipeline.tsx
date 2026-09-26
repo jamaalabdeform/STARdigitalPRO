@@ -47,7 +47,12 @@ export function CrmPipeline() {
         <span className="tnum text-[11px] text-plomb">6 opportunités</span>
       </div>
 
-      <div className="no-bar grid grid-cols-4 gap-px overflow-x-auto bg-noir/8">
+      <div
+        role="region"
+        aria-label="Colonnes du pipeline"
+        tabIndex={0}
+        className="no-bar grid grid-cols-4 gap-px overflow-x-auto bg-noir/8"
+      >
         {columns.map((col) => (
           <div key={col.title} className="min-w-[132px] bg-blanc p-3">
             <div className="mb-2.5 flex items-center gap-1.5">

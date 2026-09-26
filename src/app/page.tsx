@@ -9,6 +9,7 @@ import {
   ArrowIcon,
 } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
+import { Entree } from "@/components/ui/Entree";
 import { Faq } from "@/components/ui/Faq";
 import {
   Sparkle,
@@ -55,7 +56,7 @@ export default function Home() {
         <Container className="relative">
           <div className="grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
             <div>
-              <Reveal>
+              <Entree>
                 <p className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-plomb-clair">
                   {site.domaines.map((d, i) => (
                     <span key={d} className="flex items-center gap-3">
@@ -66,25 +67,25 @@ export default function Home() {
                     </span>
                   ))}
                 </p>
-              </Reveal>
+              </Entree>
 
-              <Reveal delay={0.06}>
+              <Entree delay={0.06}>
                 <h1 className="h-display text-[clamp(2.3rem,5.4vw,4.3rem)] text-blanc">
                   De la première vue
                   <br />
                   à la <span className="mot-or">première vente.</span>
                 </h1>
-              </Reveal>
+              </Entree>
 
-              <Reveal delay={0.12}>
+              <Entree delay={0.12}>
                 <p className="mt-7 max-w-[54ch] text-[clamp(1.02rem,1.35vw,1.2rem)] leading-relaxed text-plomb-clair">
                   {site.promesse} Image de marque, présence digitale, CRM,
                   automatisations et solutions intelligentes — assemblés selon
                   votre activité.
                 </p>
-              </Reveal>
+              </Entree>
 
-              <Reveal delay={0.18}>
+              <Entree delay={0.18}>
                 <div className="mt-9 flex flex-wrap gap-3">
                   <Button href="/contact" size="lg">
                     {site.cta.primary}
@@ -94,10 +95,10 @@ export default function Home() {
                     {site.cta.secondary}
                   </Button>
                 </div>
-              </Reveal>
+              </Entree>
 
-              <Reveal delay={0.24}>
-                <p className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-plomb">
+              <Entree delay={0.24}>
+                <p className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-plomb-clair">
                   <span>France</span>
                   <span aria-hidden="true" className="text-or">
                     ·
@@ -108,12 +109,12 @@ export default function Home() {
                   </span>
                   <span>Solutions sur mesure</span>
                 </p>
-              </Reveal>
+              </Entree>
             </div>
 
-            <Reveal delay={0.14}>
+            <Entree delay={0.14}>
               <SystemDiagram />
-            </Reveal>
+            </Entree>
           </div>
         </Container>
       </section>
@@ -143,7 +144,7 @@ export default function Home() {
                       name={iconeParService[s.id]}
                       className="h-7 w-7 text-or"
                     />
-                    <span className="tnum text-[11px] text-plomb">
+                    <span className="tnum text-[11px] text-plomb-clair">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -241,9 +242,15 @@ export default function Home() {
                 <Reveal>
                   <div>
                     <div className="flex items-center gap-4">
-                      <span className="tnum h-section text-[clamp(2.4rem,5vw,3.4rem)] text-noir/12">
-                        {act.n}
-                      </span>
+                      {/* Numéro décoratif, volontairement pâle : rendu en
+                          pseudo-élément, hors de l'arbre d'accessibilité et
+                          des contrôles de contraste qui ne concernent que le
+                          texte porteur de sens. */}
+                      <span
+                        aria-hidden="true"
+                        data-n={act.n}
+                        className="tnum h-section text-[clamp(2.4rem,5vw,3.4rem)] text-noir/12 before:content-[attr(data-n)]"
+                      />
                       <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-or-sombre">
                         <Sparkle className="h-3 w-2.5" />
                         {act.eyebrow}
@@ -344,8 +351,12 @@ export default function Home() {
 
           <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-blanc/12 bg-blanc/10 md:grid-cols-5">
             {method.map((m, i) => (
-              <Reveal key={m.n} delay={i * 0.05}>
-                <li className="flex h-full flex-col bg-noir p-6">
+              <Reveal
+                key={m.n}
+                as="li"
+                delay={i * 0.05}
+                className="flex h-full flex-col bg-noir p-6"
+              >
                   <span className="tnum text-[11px] font-semibold text-or">
                     {m.n}
                   </span>
@@ -355,7 +366,6 @@ export default function Home() {
                   <p className="mt-2.5 text-[14px] leading-relaxed text-plomb-clair">
                     {m.body}
                   </p>
-                </li>
               </Reveal>
             ))}
           </ol>
@@ -436,7 +446,7 @@ function DemoCard({
         <BrandIcon name={icon} className="h-6 w-6 text-or" />
         <Pill tone="or">Démo</Pill>
       </div>
-      <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-plomb">
+      <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-plomb-clair">
         {meta}
       </p>
       <h3 className="h-section mt-2 text-[19px] text-blanc">{title}</h3>

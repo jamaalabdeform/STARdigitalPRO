@@ -112,21 +112,8 @@ Tailwind v4 se configure **en CSS**, pas en `tailwind.config.js`. Les tokens
 sont déclarés dans le bloc `@theme` de `src/app/globals.css` et génèrent leurs
 utilitaires automatiquement.
 
-| Rôle | Token | Valeur |
-|---|---|---|
-| Fond sombre | `charcoal` | `#0E1116` |
-| Gris profond | `graphite` | `#232831` |
-| Fond clair | `paper` | `#F6F4EF` |
-| Texte secondaire | `muted` | `#7A838F` |
-| Accent principal | `blue` | `#3366FF` |
-| Accent secondaire | `ember` | `#FF8B4A` |
-
-Typographie : **Space Grotesk** en titrage, **Inter** en courant, servies en
-local par `next/font` (aucune requête vers un tiers).
-
-Le choix de l'orange plutôt que du vert acide proposé en alternative est
-délibéré : lime + bleu électrique est la signature visuelle des SaaS IA, que le
-brief demandait explicitement d'éviter.
+Palette, typographie (**Plus Jakarta Sans**) et règles de contraste : voir
+**`BRAND.md`**, qui fait référence.
 
 ---
 
@@ -161,6 +148,12 @@ Ces modules sont étiquetés « Démonstration » partout où ils apparaissent.
 - `prefers-reduced-motion` neutralise toutes les animations.
 - L'état masqué des apparitions dépend d'une classe `js` posée sur `<html>` :
   si le script ne s'exécute pas, **rien n'est caché**.
+- Le haut de page de chaque route utilise `Entree` (animation CSS pure) et
+  non `Reveal` : le titre principal s'affiche dès la première peinture, sans
+  attendre l'hydratation. `Reveal` reste réservé au contenu sous la ligne de
+  flottaison.
+- Image de partage 1200×630 générée au build (`src/app/opengraph-image.tsx`),
+  en Plus Jakarta Sans (`src/assets/fonts/`, licence OFL).
 - Les 9 routes sont pré-rendues en statique au build.
 
 ---
@@ -175,4 +168,17 @@ Ces modules sont étiquetés « Démonstration » partout où ils apparaissent.
 - `robots.txt`, `sitemap.xml`, titres et descriptions uniques par page,
   JSON-LD `Organization` : vérifiés sur le build servi.
 
-Non vérifié : Lighthouse, et le rendu sur appareils physiques.
+- axe-core sur les 10 routes (404 comprise), à 390 et 1440 px : aucune
+  violation.
+- Lighthouse (mobile, build de production) :
+
+  | Page | Perf. | Access. | Bonnes pratiques | SEO |
+  |---|---|---|---|---|
+  | `/` | 98 | 100 | 100 | 100 |
+  | `/services` | 99 | 100 | 100 | 100 |
+  | `/realisations` | 99 | 100 | 100 | 100 |
+  | `/a-propos` | 100 | 100 | 100 | 100 |
+  | `/contact` | 98 | 100 | 100 | 100 |
+  | `/solutions/restaurants` | 99 | 100 | 100 | 100 |
+
+Non vérifié : le rendu sur appareils physiques.

@@ -29,7 +29,7 @@ export function LogoMark({
       aria-hidden="true"
       width={170}
       height={140}
-      priority
+      loading="eager"
       className={className}
       style={{ height: size, width: "auto" }}
     />

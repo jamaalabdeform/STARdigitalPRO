@@ -57,7 +57,7 @@ export function SystemDiagram() {
                 {b.meta}
               </p>
             </div>
-            <span className="tnum ml-auto pt-1 text-[11px] text-plomb/70">
+            <span className="tnum ml-auto pt-1 text-[11px] text-plomb">
               {String(i + 1).padStart(2, "0")}
             </span>
           </li>

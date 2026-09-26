@@ -7,6 +7,7 @@ import {
   ArrowIcon,
 } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
+import { Entree } from "@/components/ui/Entree";
 import { method } from "@/lib/content";
 import { site } from "@/lib/site";
 
@@ -41,15 +42,15 @@ export default function AProposPage() {
     <>
       <section className="pb-16 pt-32 sm:pt-40">
         <Container>
-          <Reveal>
+          <Entree>
             <Eyebrow>À propos</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.06}>
+          </Entree>
+          <Entree delay={0.06}>
             <h1 className="h-display max-w-[19ch] text-[clamp(2.2rem,5vw,3.9rem)] text-blanc">
               Ni agence de com, ni agence web.
             </h1>
-          </Reveal>
-          <Reveal delay={0.12}>
+          </Entree>
+          <Entree delay={0.12}>
             <div className="mt-7 max-w-[62ch] space-y-5 text-[clamp(1rem,1.3vw,1.16rem)] leading-relaxed text-plomb-clair">
               <p>
                 La plupart des commerces et des PME travaillent avec trois
@@ -69,7 +70,7 @@ export default function AProposPage() {
                 indépendants et commerces de proximité.
               </p>
             </div>
-          </Reveal>
+          </Entree>
         </Container>
       </section>
 
@@ -114,8 +115,11 @@ export default function AProposPage() {
 
           <ol className="mt-12 border-t border-blanc/15">
             {method.map((m) => (
-              <Reveal key={m.n}>
-                <li className="grid gap-4 border-b border-blanc/15 py-7 sm:grid-cols-[auto_1fr_2fr] sm:gap-10">
+              <Reveal
+                key={m.n}
+                as="li"
+                className="grid gap-4 border-b border-blanc/15 py-7 sm:grid-cols-[auto_1fr_2fr] sm:gap-10"
+              >
                   <span className="tnum text-[12px] text-or sm:pt-1.5">
                     {m.n}
                   </span>
@@ -125,7 +129,6 @@ export default function AProposPage() {
                   <p className="max-w-[58ch] text-[15px] leading-relaxed text-plomb-clair">
                     {m.body}
                   </p>
-                </li>
               </Reveal>
             ))}
           </ol>

@@ -58,7 +58,7 @@ export function BookingWidget() {
               key={s.time}
               className={`tnum rounded-md py-2 text-center text-[11.5px] ${
                 !s.free
-                  ? "border border-noir/8 text-plomb/50 line-through"
+                  ? "border border-noir/8 text-plomb line-through"
                   : i === 3
                     ? "bg-or text-noir"
                     : "border border-noir/15 text-noir"

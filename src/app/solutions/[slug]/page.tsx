@@ -9,6 +9,7 @@ import {
   ArrowIcon,
 } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
+import { Entree } from "@/components/ui/Entree";
 import { Faq } from "@/components/ui/Faq";
 import { PhoneSite } from "@/components/mockups/PhoneSite";
 import { BookingWidget } from "@/components/mockups/BookingWidget";
@@ -73,7 +74,9 @@ export default async function VerticalPage({
             alt=""
             width={720}
             height={188}
-            priority
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="high"
             className="h-full w-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/55 via-noir/85 to-noir" />
@@ -83,7 +86,7 @@ export default async function VerticalPage({
         <Container className="relative">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div>
-              <Reveal>
+              <Entree>
                 <div className="mb-6 flex items-center gap-4">
                   <PastilleOr>
                     <BrandIcon name={vertical.slug as NomSecteur} className="h-6 w-6" />
@@ -92,23 +95,23 @@ export default async function VerticalPage({
                     Solutions · {vertical.label}
                   </span>
                 </div>
-              </Reveal>
-              <Reveal delay={0.06}>
+              </Entree>
+              <Entree delay={0.06}>
                 <h1 className="h-display max-w-[17ch] text-[clamp(2.1rem,4.8vw,3.7rem)] text-blanc">
                   {vertical.hero}
                 </h1>
-              </Reveal>
-              <Reveal delay={0.09}>
+              </Entree>
+              <Entree delay={0.09}>
                 <p className="mt-4 text-[14px] font-semibold uppercase tracking-[0.14em] text-or-clair">
                   {univers.accroche}
                 </p>
-              </Reveal>
-              <Reveal delay={0.12}>
+              </Entree>
+              <Entree delay={0.12}>
                 <p className="mt-7 max-w-[56ch] text-[clamp(1rem,1.3vw,1.14rem)] leading-relaxed text-plomb-clair">
                   {vertical.intro}
                 </p>
-              </Reveal>
-              <Reveal delay={0.18}>
+              </Entree>
+              <Entree delay={0.18}>
                 <div className="mt-9 flex flex-wrap gap-3">
                   <Button href="/contact" size="lg">
                     {vertical.cta}
@@ -118,12 +121,12 @@ export default async function VerticalPage({
                     Voir toutes les briques
                   </Button>
                 </div>
-              </Reveal>
+              </Entree>
             </div>
 
-            <Reveal delay={0.14}>
+            <Entree delay={0.14}>
               <div>{visualA}</div>
-            </Reveal>
+            </Entree>
           </div>
         </Container>
       </section>

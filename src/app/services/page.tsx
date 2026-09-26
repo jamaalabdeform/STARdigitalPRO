@@ -8,6 +8,7 @@ import {
   ArrowIcon,
 } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
+import { Entree } from "@/components/ui/Entree";
 import { services } from "@/lib/content";
 import { site, verticals } from "@/lib/site";
 
@@ -23,29 +24,29 @@ export default function ServicesPage() {
     <>
       <section className="pb-16 pt-32 sm:pt-40">
         <Container>
-          <Reveal>
+          <Entree>
             <Eyebrow>Services</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.06}>
+          </Entree>
+          <Entree delay={0.06}>
             <h1 className="h-display max-w-[20ch] text-[clamp(2.2rem,5vw,3.9rem)] text-blanc">
               Six briques. Assemblées selon votre activité.
             </h1>
-          </Reveal>
-          <Reveal delay={0.12}>
+          </Entree>
+          <Entree delay={0.12}>
             <p className="mt-7 max-w-[60ch] text-[clamp(1rem,1.3vw,1.16rem)] leading-relaxed text-plomb-clair">
               Rares sont les entreprises qui ont besoin des six en même temps. La
               question utile n&apos;est pas « que peut-on faire ? » mais « qu&apos;est-ce
               qui manque réellement, et dans quel ordre ? ».
             </p>
-          </Reveal>
-          <Reveal delay={0.18}>
+          </Entree>
+          <Entree delay={0.18}>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button href="/contact" size="lg">
                 {site.cta.primary}
                 <ArrowIcon />
               </Button>
             </div>
-          </Reveal>
+          </Entree>
         </Container>
       </section>
 
@@ -60,7 +61,7 @@ export default function ServicesPage() {
                     href={`#${s.id}`}
                     className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-blanc/15 px-4 py-2 text-[13.5px] text-plomb-clair transition-colors duration-300 hover:border-or hover:bg-or hover:text-noir"
                   >
-                    <span className="tnum text-[11px] text-plomb">
+                    <span className="tnum text-[11px] text-plomb-clair">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {s.label}

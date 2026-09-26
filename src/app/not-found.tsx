@@ -32,7 +32,7 @@ export default function NotFound() {
         </div>
 
         <div className="mt-14 border-t border-blanc/15 pt-7">
-          <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-plomb">
+          <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-plomb-clair">
             Solutions par métier
           </p>
           <div className="flex flex-wrap gap-2.5">
