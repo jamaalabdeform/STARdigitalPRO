@@ -166,11 +166,11 @@ function Scene({
     const plans = textures.map((tex) => {
       const img = tex.image as HTMLImageElement;
       const ratio = img.width / img.height;
-      const hMax = demiH * (large ? 1.05 : 0.8);
-      const lMax = demiL * (large ? 0.95 : 1.8);
+      const hMax = demiH * (large ? 1.25 : 0.85);
+      const lMax = demiL * (large ? 1.15 : 2);
       const h = Math.min(hMax, lMax / ratio);
       return {
-        x: large ? demiL * 0.45 : 0,
+        x: large ? demiL * 0.5 : 0,
         y: large ? 0 : demiH * 0.3,
         l: h * ratio,
         h,

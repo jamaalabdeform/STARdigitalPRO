@@ -132,9 +132,10 @@ IA — chacune avec un visuel, un titre et une courte description.
   du site reprend après la sixième étape.
 - **Contenu :** `etapesHero` dans `src/lib/content.ts`. Tout le texte est du
   HTML rendu côté serveur (indexable, lisible sans JavaScript).
-- **Visuels :** `public/hero/*.webp`, captures des maquettes de
-  `components/mockups/` sur fond transparent. Si une maquette change,
-  recapturez-la pour que le hero reste cohérent.
+- **Visuels :** `public/hero/*.webp`, compositions de démonstration fournies
+  par STAR DIGI PRO. Seule la partie visuelle est conservée, bords fondus en
+  transparence pour se mêler au fond de la scène. Pour en remplacer un, gardez
+  un fond sombre et un format paysage (~1200 × 820 px).
 - **Performance :** three.js (~850 Ko non compressés) n'est chargé qu'à la
   première interaction (défilement, souris, doigt, clavier). Le premier
   affichage n'en dépend pas ; le rendu s'arrête quand le hero sort de l'écran.

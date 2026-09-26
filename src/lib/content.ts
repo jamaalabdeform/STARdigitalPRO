@@ -7,9 +7,9 @@
  */
 
 /* ------------------------------------------------ Hero : les six étapes --- */
-/* Galerie 3D de l'accueil. Chaque visuel est une capture des maquettes de
-   `components/mockups/` (voir public/hero/) : ce sont des démonstrations,
-   aucune ne représente un client. */
+/* Galerie 3D de l'accueil. Visuels de démonstration fournis par STAR DIGI
+   PRO (public/hero/), recadrés sur la composition et fondus sur les bords.
+   Les établissements qui y figurent sont fictifs. */
 
 export type EtapeHero = {
   id: string;
@@ -28,7 +28,7 @@ export const etapesHero: EtapeHero[] = [
       "Un logo, une charte et des supports qui parlent d'une seule voix, de la devanture à l'écran du téléphone.",
     visuel: {
       src: "/hero/identite.webp",
-      alt: "Démonstration d'une planche de marque : logotype, palette de couleurs et typographie.",
+      alt: "Démonstration d'identité pour un restaurant fictif : logo, palette, typographies, cartes de visite, devanture et site mobile.",
     },
     service: "identite",
   },
@@ -39,7 +39,7 @@ export const etapesHero: EtapeHero[] = [
       "Un site rapide, compris en dix secondes, construit pour faire passer à l'action : appeler, venir, réserver.",
     visuel: {
       src: "/hero/site.webp",
-      alt: "Démonstration d'un site mobile et de sa fiche d'établissement avec boutons Itinéraire, Appeler et Réserver.",
+      alt: "Démonstration d'un site de barber shop fictif sur tablette et mobile, avec sa fiche d'établissement : itinéraire, appel, réservation.",
     },
     service: "web",
   },
@@ -50,7 +50,7 @@ export const etapesHero: EtapeHero[] = [
       "Vos clients choisissent leur créneau en ligne, à toute heure, sans passer par le téléphone.",
     visuel: {
       src: "/hero/reservation.webp",
-      alt: "Démonstration d'un module de réservation avec choix du jour et de l'heure, et rappel automatique.",
+      alt: "Démonstration d'un module de réservation : choix de la date et du créneau, confirmation sur mobile et rappel envoyé la veille.",
     },
     service: "crm",
   },
@@ -61,7 +61,7 @@ export const etapesHero: EtapeHero[] = [
       "Chaque demande arrive au même endroit et se suit jusqu'à la vente. Plus rien ne se perd entre un carnet et WhatsApp.",
     visuel: {
       src: "/hero/crm.webp",
-      alt: "Démonstration d'un pipeline commercial en quatre colonnes : nouveau contact, qualifié, devis envoyé, client.",
+      alt: "Démonstration d'un CRM : pipeline commercial en quatre colonnes sur ordinateur et notifications de nouvelles demandes sur mobile.",
     },
     service: "crm",
   },
@@ -83,7 +83,7 @@ export const etapesHero: EtapeHero[] = [
       "Un assistant qui répond à vos clients jour et nuit et qualifie les demandes avant qu'elles ne vous arrivent.",
     visuel: {
       src: "/hero/ia.webp",
-      alt: "Démonstration d'une conversation avec l'assistant Jawabot.",
+      alt: "Démonstration de l'assistant Jawabot : conversation de prise de rendez-vous, demande qualifiée et transmise au CRM.",
     },
     service: "ia",
   },
