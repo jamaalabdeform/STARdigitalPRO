@@ -13,7 +13,6 @@ import { Faq } from "@/components/ui/Faq";
 import {
   Oblique,
   Filet,
-  Pastille,
 } from "@/components/brand/Motifs";
 import { BrandIcon, iconeParService } from "@/components/brand/Icons";
 import { HeroGalerie } from "@/components/hero/HeroGalerie";
@@ -50,37 +49,39 @@ export default function Home() {
       <Filet />
 
       {/* ══════════════════════════════════════════════════ 2. OFFRE 360° ═══ */}
-      <section className="py-20 lg:py-28">
+      {/* Fond clair, typographie et icônes noires : la marque, sans couleur. */}
+      <section className="sec-claire py-20 lg:py-32">
         <Container>
           <Reveal>
             <SectionHead
+              tone="sombre"
               eyebrow="Offre 360°"
               title="Vous n'avez pas besoin de multiplier les prestataires."
               lead="Un logo sans cohérence digitale ne suffit pas. Un site sans parcours client ne suffit pas. Un CRM sans stratégie ne suffit pas. Nous assemblons les briques réellement utiles à votre activité, de l'identité jusqu'aux automatisations."
             />
           </Reveal>
 
-          <div className="mt-14 grid gap-px overflow-hidden border border-blanc/12 bg-blanc/10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-px overflow-hidden border border-noir/12 bg-noir/10 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.id} delay={i * 0.05}>
                 <Link
                   href={`/services#${s.id}`}
-                  className="carte-ligne group flex h-full flex-col bg-noir p-7 transition-colors duration-500 hover:bg-graphite"
+                  className="carte-ligne group flex h-full flex-col bg-casse p-8 text-noir transition-colors duration-500 hover:bg-blanc"
                 >
                   <div className="flex items-start justify-between">
                     <BrandIcon
                       name={iconeParService[s.id]}
-                      className="h-7 w-7 text-blanc"
+                      className="h-7 w-7 text-noir"
                     />
-                    <span className="tnum text-[11px] text-plomb-clair">
+                    <span className="tnum text-[11px] text-plomb">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="h-section mt-6 flex items-center gap-2 text-[19px] text-blanc">
+                  <h3 className="h-section mt-8 flex items-center gap-2 text-[20px] text-noir">
                     {s.label}
-                    <ArrowIcon className="text-blanc opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <ArrowIcon className="opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-1 group-hover:opacity-100" />
                   </h3>
-                  <p className="mt-3 text-[14.5px] leading-relaxed text-plomb-clair">
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-plomb">
                     {s.short}
                   </p>
                 </Link>
@@ -91,7 +92,9 @@ export default function Home() {
       </section>
 
       {/* ═════════════════════════════════════════════ 3. SOLUTIONS MÉTIER ═══ */}
-      <section className="py-20 lg:py-28">
+      {/* Grands moments éditoriaux : la couleur entre par la photographie,
+          chaque métier porte son accent (data-univers), visible au survol. */}
+      <section className="py-20 lg:py-32">
         <Container>
           <Reveal>
             <SectionHead
@@ -101,43 +104,47 @@ export default function Home() {
             />
           </Reveal>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2">
+          <div className="mt-16 flex flex-col gap-5 lg:gap-6">
             {verticals.map((v, i) => {
               const univers = universVerticale[v.slug];
               return (
-                <Reveal key={v.slug} delay={i * 0.06}>
+                <Reveal key={v.slug}>
                   <Link
                     href={`/solutions/${v.slug}`}
-                    className="group relative flex h-full flex-col justify-end overflow-hidden border border-blanc/12 transition-[border-color] duration-500 ease-[var(--ease-soft)] hover:border-blanc/45"
+                    data-univers={univers.univers}
+                    className="group relative block overflow-hidden bg-graphite"
                   >
-                    <Image
-                      src={univers.photo}
-                      alt=""
-                      width={720}
-                      height={188}
-                      className="photo-nb absolute inset-0 h-full w-full object-cover opacity-60 transition-[opacity,transform] duration-1000 ease-[var(--ease-soft)] group-hover:scale-[1.03] group-hover:opacity-80"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-noir via-noir/75 to-noir/10"
-                    />
+                    <div className="relative aspect-square sm:aspect-[2.2/1] lg:aspect-[3/1]">
+                      <Image
+                        src={univers.photo}
+                        alt={univers.alt}
+                        fill
+                        sizes="(min-width: 1440px) 1312px, 100vw"
+                        style={{ objectPosition: univers.cadrage }}
+                        className="object-cover saturate-[0.85] transition-[filter,transform] duration-1000 ease-[var(--ease-soft)] group-hover:scale-[1.02] group-hover:saturate-100"
+                      />
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-gradient-to-t from-noir/95 via-noir/25 via-45% to-transparent to-70% lg:bg-gradient-to-r lg:from-noir/85 lg:via-noir/30 lg:via-45% lg:to-transparent"
+                      />
+                    </div>
 
-                    <div className="relative flex items-start gap-4 p-7 sm:p-8">
-                      <Pastille>
-                        <BrandIcon name={v.slug} className="h-6 w-6" />
-                      </Pastille>
-                      <div>
-                        <h3 className="h-section text-[clamp(1.35rem,2.3vw,1.75rem)] text-blanc">
-                          {v.navLabel}
-                        </h3>
-                        <p className="mt-2 max-w-[34ch] text-[14.5px] leading-relaxed text-plomb-clair">
-                          {v.teaser}
-                        </p>
-                        <span className="mt-4 inline-flex items-center gap-2 text-[13.5px] font-semibold text-blanc">
-                          Voir la solution
-                          <ArrowIcon className="transition-transform duration-500 ease-[var(--ease-soft)] group-hover:translate-x-1" />
-                        </span>
-                      </div>
+                    <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6 sm:p-9 lg:inset-y-0 lg:max-w-[44%] lg:justify-center lg:p-12">
+                      <p className="label flex items-center gap-4 text-blanc/70">
+                        <span className="tnum">{String(i + 1).padStart(2, "0")}</span>
+                        <span
+                          aria-hidden="true"
+                          className="block h-px w-8 bg-blanc/40 transition-[width,background-color] duration-700 ease-[var(--ease-soft)] group-hover:w-14 group-hover:bg-accent-texte"
+                        />
+                        {v.label}
+                      </p>
+                      <h3 className="h-section text-[clamp(1.9rem,3.6vw,3.25rem)] text-blanc">
+                        {v.teaser}
+                      </h3>
+                      <span className="inline-flex items-center gap-3 text-[14px] font-medium text-blanc transition-colors duration-500 group-hover:text-accent-texte">
+                        Voir la solution {v.navLabel.toLowerCase()}
+                        <ArrowIcon className="transition-transform duration-500 ease-[var(--ease-soft)] group-hover:translate-x-1" />
+                      </span>
                     </div>
                   </Link>
                 </Reveal>
@@ -148,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════ 4. PARCOURS — LES CINQ ACTES ═══ */}
-      <section className="sec-claire py-20 lg:py-28">
+      <section className="sec-claire bg-gris-chaud py-20 lg:py-28">
         <Container>
           <Reveal>
             <SectionHead

@@ -5,7 +5,8 @@ import { site } from "@/lib/site";
 
 /**
  * Image de partage (Open Graph / X / LinkedIn / WhatsApp), générée au build.
- * Charte noir / blanc : symbole, wordmark et signature, rien d'autre.
+ * Une photo forte en couleur (le business), le logo en noir et blanc (la
+ * marque) — les aperçus sociaux peuvent être plus colorés que le site.
  * Toutes les pages en héritent, faute d'image propre à leur segment.
  */
 
@@ -21,7 +22,12 @@ const font = (weight: 400 | 600) =>
   );
 
 export default async function Image() {
-  const [regular, semibold] = await Promise.all([font(400), font(600)]);
+  const [regular, semibold, fond] = await Promise.all([
+    font(400),
+    font(600),
+    readFile(join(process.cwd(), "src/assets/og-fond.jpg")),
+  ]);
+  const fondSrc = `data:image/jpeg;base64,${fond.toString("base64")}`;
 
   return new ImageResponse(
     <div
@@ -35,8 +41,28 @@ export default async function Image() {
         fontFamily: "Inter",
         background: "#050505",
         color: "#F4F3EF",
+        position: "relative",
       }}
     >
+      <img
+        src={fondSrc}
+        alt=""
+        width={1200}
+        height={630}
+        style={{ position: "absolute", top: 0, left: 0 }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: 1200,
+          height: 630,
+          display: "flex",
+          background:
+            "linear-gradient(90deg, rgba(5,5,5,0.94) 0%, rgba(5,5,5,0.82) 45%, rgba(5,5,5,0.15) 100%)",
+        }}
+      />
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
         <svg width="54" height="36" viewBox="0 0 48 32">
           <path d="M3 24 12 8h11l-9 16H3Z" fill="#F4F3EF" />
@@ -72,10 +98,10 @@ export default async function Image() {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          borderTop: "1px solid #2A2A2A",
+          borderTop: "1px solid rgba(244,243,239,0.18)",
           paddingTop: 26,
           fontSize: 24,
-          color: "#A3A3A3",
+          color: "#C9C9C9",
         }}
       >
         <span>Communication. Design. Digital. Automatisation.</span>

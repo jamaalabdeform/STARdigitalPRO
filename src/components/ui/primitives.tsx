@@ -90,7 +90,13 @@ export function SectionHead({
 
 /* ----------------------------------------------------------------- Button -- */
 
-type ButtonVariant = "primary" | "outline" | "outlineDark" | "dark" | "ghost";
+type ButtonVariant =
+  | "primary"
+  | "outline"
+  | "outlineDark"
+  | "dark"
+  | "accent"
+  | "ghost";
 
 /* Rectangles nets, sans arrondi : la sobriété d'un objet imprimé. Survol :
    inversion de couleur et léger déplacement de la flèche, rien de plus. */
@@ -114,6 +120,10 @@ const buttonVariants: Record<ButtonVariant, string> = {
     "border border-noir/30 text-noir hover:border-noir hover:bg-noir hover:text-blanc",
   /** Plein noir, sur fond clair. */
   dark: "border border-noir bg-noir text-blanc hover:bg-transparent hover:text-noir",
+  /** Aplat à l'accent de l'univers (`data-univers`), sur fond sombre.
+      Réservé aux pages métier : l'exception, pas la règle. */
+  accent:
+    "border border-accent bg-accent text-accent-encre hover:border-accent-texte hover:bg-transparent hover:text-accent-texte",
   ghost: "text-blanc hover:bg-blanc/10",
 };
 

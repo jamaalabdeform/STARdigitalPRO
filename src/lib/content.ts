@@ -7,8 +7,10 @@
  */
 
 /* ------------------------------------------------ Hero : les six étapes --- */
-/* Galerie 3D de l'accueil : une campagne en six images noir et blanc, une idée
-   par étape (public/hero/). Visuels de démonstration — aucun client réel. */
+/* Galerie 3D de l'accueil : une campagne en six images, une idée par étape
+   (public/hero/, masters dans design/masters/couleur/). L'introduction reste
+   noir et blanc ; la couleur entre avec la première étape, portée par le
+   contenu. Visuels de démonstration — aucun client réel. */
 
 export type EtapeHero = {
   id: string;
@@ -30,7 +32,7 @@ export const etapesHero: EtapeHero[] = [
       "Logo, charte, supports : une identité qui parle d'une seule voix, de la devanture à l'écran du téléphone.",
     visuel: {
       src: "/hero/identite.webp",
-      alt: "Table de travail de directeur artistique : planches de logo monochrome, carte, menu et smartphone.",
+      alt: "Table de marbre noir : pochettes et cartes au logo blanc, nuancier et papeterie bordeaux, smartphone.",
     },
     service: "identite",
   },
@@ -42,7 +44,7 @@ export const etapesHero: EtapeHero[] = [
       "Un site rapide, compris en dix secondes, construit pour faire passer à l'action : appeler, venir, réserver.",
     visuel: {
       src: "/hero/site.webp",
-      alt: "Écran et smartphone affichant le site d'un barber shop, posés dans le salon.",
+      alt: "Ordinateur portable et smartphone affichant le site d'un barber shop, dans un salon aux fauteuils de cuir.",
     },
     service: "web",
   },
@@ -54,7 +56,7 @@ export const etapesHero: EtapeHero[] = [
       "Vos clients choisissent leur créneau en ligne, à toute heure, sans passer par le téléphone.",
     visuel: {
       src: "/hero/reservation.webp",
-      alt: "Smartphone affichant un calendrier de réservation, posé sur une table de barbier à côté de ciseaux.",
+      alt: "Smartphone affichant un calendrier de réservation, créneau sélectionné en bleu, posé sur le marbre à côté de ciseaux.",
     },
     service: "crm",
   },
@@ -66,7 +68,7 @@ export const etapesHero: EtapeHero[] = [
       "Chaque demande arrive au même endroit et se suit jusqu'à la vente. Ordre, visibilité, contrôle.",
     visuel: {
       src: "/hero/crm.webp",
-      alt: "Écran affichant un pipeline commercial en quatre colonnes, smartphone recevant une notification.",
+      alt: "Écran affichant un pipeline commercial en quatre colonnes, statuts repérés en bleu, violet, ambre et vert.",
     },
     service: "crm",
   },
@@ -78,7 +80,7 @@ export const etapesHero: EtapeHero[] = [
       "Réservation, rappel, avis, fidélisation : chaque étape s'enchaîne au bon moment, sans y penser.",
     visuel: {
       src: "/hero/automatisation.webp",
-      alt: "Quatre écrans alignés et reliés : réservation, rappel, demande d'avis, offre de fidélité.",
+      alt: "Parcours automatisé : réservation, message, conversation et avis, reliés par un fil orange.",
     },
     service: "automatisation",
   },
@@ -90,7 +92,7 @@ export const etapesHero: EtapeHero[] = [
       "Il répond à vos clients jour et nuit, réserve le créneau et met votre CRM à jour. Simple, utile, invisible.",
     visuel: {
       src: "/hero/ia.webp",
-      alt: "Smartphone posé sur un bureau sombre, affichant une conversation avec l'assistant de réservation.",
+      alt: "Smartphone affichant une conversation avec l'assistant, réponses en bleu et demande validée en vert.",
     },
     service: "ia",
   },
@@ -507,33 +509,50 @@ export function getVertical(slug: string): Vertical | undefined {
 }
 
 /**
- * Univers visuel par secteur, repris de la charte.
+ * Univers visuel par secteur.
  *
  * `accroche` est la formule officielle du secteur — à ne pas réécrire.
- * `photo` pointe vers le bandeau d'ambiance extrait de la planche de marque.
- *
- * ⚠ Ces images proviennent de vignettes de la charte (360 px de large à la
- * source) : elles donnent la direction photo mais ne sont pas des visuels de
- * production. À remplacer par de vraies photographies — voir BRAND.md.
+ * `photo` : grand visuel couleur (public/secteurs/, 1600 × 530), recadré depuis
+ * les masters de design/masters/couleur/ au-dessus du texte qu'ils incrustaient.
+ * `univers` : valeur de `data-univers`, qui fixe l'accent de la section.
  */
 export const universVerticale: Record<
   string,
-  { photo: string; accroche: string }
+  {
+    photo: string;
+    alt: string;
+    accroche: string;
+    univers: "restaurant" | "barber" | "beaute" | "automobile";
+    /** Point focal du recadrage (object-position), surtout utile sur mobile. */
+    cadrage: string;
+  }
 > = {
   restaurants: {
-    photo: "/verticals/restaurants.jpg",
+    photo: "/secteurs/restaurants.jpg",
+    alt: "Salle de restaurant en soirée, verres de vin et assiettes sous une lumière chaude.",
     accroche: "De la première envie à la réservation.",
+    univers: "restaurant",
+    cadrage: "50% 50%",
   },
   barbers: {
-    photo: "/verticals/barbers.jpg",
+    photo: "/secteurs/barbers.jpg",
+    alt: "Barber shop aux boiseries sombres, fauteuil en cuir et étagères de flacons.",
     accroche: "Une image forte. Un planning rempli.",
+    univers: "barber",
+    cadrage: "42% 50%",
   },
   beaute: {
-    photo: "/verticals/beaute.jpg",
+    photo: "/secteurs/beaute.jpg",
+    alt: "Institut de beauté : serviette roulée, plante, flacons de soin et bougie.",
     accroche: "Votre expérience commence avant le rendez-vous.",
+    univers: "beaute",
+    cadrage: "40% 50%",
   },
   automobile: {
-    photo: "/verticals/automobile.jpg",
+    photo: "/secteurs/automobile.jpg",
+    alt: "Berline noire sous l'éclairage architectural d'un showroom.",
     accroche: "Une image à la hauteur de ce que vous vendez.",
+    univers: "automobile",
+    cadrage: "28% 50%",
   },
 };

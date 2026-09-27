@@ -60,7 +60,7 @@ export function BookingWidget() {
                 !s.free
                   ? "border border-noir/8 text-plomb line-through"
                   : i === 3
-                    ? "bg-noir text-blanc"
+                    ? "bg-info text-blanc"
                     : "border border-noir/15 text-noir"
               }`}
             >
@@ -70,7 +70,7 @@ export function BookingWidget() {
         </div>
 
         <div className="border-t border-noir/10 px-4 py-3">
-          <div className="rounded-lg bg-noir py-2.5 text-center text-[12.5px] font-semibold text-blanc">
+          <div className="rounded-lg bg-info py-2.5 text-center text-[12.5px] font-semibold text-blanc">
             Confirmer 13:45
           </div>
           <p className="mt-2 text-center text-[10.5px] text-plomb">

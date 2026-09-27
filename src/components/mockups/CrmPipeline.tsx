@@ -10,7 +10,7 @@ export function CrmPipeline() {
   const columns = [
     {
       title: "Nouveau contact",
-      tone: "plomb" as const,
+      tone: "info" as const,
       cards: [
         { label: "Restaurant · Lille", meta: "Formulaire site" },
         { label: "Institut · Namur", meta: "WhatsApp" },
@@ -18,7 +18,7 @@ export function CrmPipeline() {
     },
     {
       title: "Qualifié",
-      tone: "plomb" as const,
+      tone: "indigo" as const,
       cards: [
         { label: "Barber shop · Mons", meta: "Appel · 12 min" },
         { label: "Garage · Roubaix", meta: "Formulaire site" },
@@ -26,12 +26,12 @@ export function CrmPipeline() {
     },
     {
       title: "Devis envoyé",
-      tone: "accent" as const,
+      tone: "ambre" as const,
       cards: [{ label: "Boutique · Tournai", meta: "Relance J+3 programmée" }],
     },
     {
-      /* Le vert de la charte porte « conversion, succès, croissance » :
-         c'est exactement l'étape gagnée du pipeline. */
+      /* La couleur code le statut, rien d'autre : bleu (nouveau), indigo
+         (qualifié), ambre (proposition), vert (gagné). Le tableau reste neutre. */
       title: "Client",
       tone: "vert" as const,
       cards: [{ label: "Restaurant · Valenciennes", meta: "Onboarding" }],
@@ -58,11 +58,12 @@ export function CrmPipeline() {
             <div className="mb-2.5 flex items-center gap-1.5">
               <span
                 className={`h-1.5 w-1.5 rounded-full ${
-                  col.tone === "accent"
-                    ? "bg-noir"
-                    : col.tone === "vert"
-                      ? "bg-vert"
-                      : "bg-plomb/50"
+                  {
+                    info: "bg-info",
+                    indigo: "bg-indigo",
+                    ambre: "bg-ambre",
+                    vert: "bg-vert",
+                  }[col.tone]
                 }`}
               />
               <span className="text-[10.5px] font-medium text-graphite">

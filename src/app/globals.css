@@ -23,8 +23,21 @@
   --color-plomb: #5c5c5c; /* sur fond clair — ≥ 4.5:1 jusque sur gris-clair */
   --color-plomb-clair: #a3a3a3; /* sur fond sombre — ≥ 4.5:1 jusque sur graphite */
 
-  /* --- Rôles fonctionnels (formulaires, états) — hors identité ------------ */
-  --color-vert: #1f9d6b; /* succès */
+  /* --- Fonds de respiration (sections claires, jamais en alternance
+         mécanique avec le noir) ------------------------------------------ */
+  --color-gris-chaud: #eceae5;
+  --color-gris-froid: #e9edf0;
+  --color-rose-pale: #efe8e3;
+
+  /* --- Couleurs fonctionnelles des interfaces ---------------------------
+     Elles codent un état (info, attente, succès, alerte), jamais une
+     décoration. 2 à 3 au maximum dans une même interface. */
+  --color-info: #3a64e6; /* nouveau, sélection — texte blanc 5:1 */
+  --color-indigo: #7867ff; /* qualifié */
+  --color-ambre: #c08a2e; /* proposition, attente */
+  --color-vert: #2e9e68; /* succès, confirmation */
+  --color-braise: #d26a2e; /* flux actif (automatisation) */
+  --color-mineral: #354a63; /* IA — bleu nuit minéral */
   --color-alerte: #e5484d; /* erreur */
 
   /* --- Typographie : Inter (alternative libre à Suisse Int'l) ------------- */
@@ -33,6 +46,81 @@
 
   /* Mouvement : lent, précis, fluide. */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Accent contextuel — `inline` : les utilitaires (bg-accent, text-accent-texte…)
+   pointent directement sur la variable, résolue là où `data-univers` la
+   redéfinit, et non figée à la racine.
+   --accent        fonds, boutons, filets
+   --accent-texte  accent lisible sur fond sombre (≥ 4.5:1 sur #050505)
+   --accent-encre  texte posé sur un aplat --accent */
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-texte: var(--accent-texte);
+  --color-accent-encre: var(--accent-encre);
+}
+
+/* ------------------------------------------------ Univers de couleur ---- */
+/* Un seul accent par section. Valeurs par défaut : neutres (la marque). */
+
+:root {
+  --accent: #ffffff;
+  --accent-texte: #ffffff;
+  --accent-encre: #050505;
+}
+
+/* Métiers */
+[data-univers="restaurant"] {
+  --accent: #a94f35; /* terracotta — vin #6E1F2A, olive #5E6B45, crème #E8DCC8 */
+  --accent-texte: #c9674b;
+  --accent-encre: #ffffff;
+}
+[data-univers="barber"] {
+  --accent: #8e4f2b; /* cuivre sombre — noyer #4A352D, ambre #D49A4A */
+  --accent-texte: #c98a55;
+  --accent-encre: #ffffff;
+}
+[data-univers="beaute"] {
+  --accent: #d7b6a5; /* nude — sauge #A8B5A2, rose poudré #D9BFC2, ivoire #EEE9E2 */
+  --accent-texte: #c7a597;
+  --accent-encre: #050505;
+}
+[data-univers="automobile"] {
+  --accent: #35506b; /* bleu acier — rouge profond #7A232C, argent #A7ADB5 */
+  --accent-texte: #7e9bba;
+  --accent-encre: #ffffff;
+}
+
+/* Étapes du hero */
+[data-univers="identite"] {
+  --accent: #6e1f2a; /* bordeaux profond */
+  --accent-texte: #cf6173;
+  --accent-encre: #ffffff;
+}
+[data-univers="site"] {
+  --accent: #b66a3c; /* cuivre, lumière chaude */
+  --accent-texte: #c98a55;
+  --accent-encre: #ffffff;
+}
+[data-univers="reservation"] {
+  --accent: #4b78ff; /* bleu fonctionnel */
+  --accent-texte: #6b8dff;
+  --accent-encre: #ffffff;
+}
+[data-univers="crm"] {
+  --accent: #c08a2e; /* ambre — statuts bleu / ambre / vert */
+  --accent-texte: #d39b3e;
+  --accent-encre: #050505;
+}
+[data-univers="automatisation"] {
+  --accent: #d26a2e; /* orange brûlé, flux actif */
+  --accent-texte: #e07a3c;
+  --accent-encre: #050505;
+}
+[data-univers="ia"] {
+  --accent: #354a63; /* bleu minéral */
+  --accent-texte: #6fa3b0;
+  --accent-encre: #ffffff;
 }
 
 /* ---------------------------------------------------------------- Base ---- */
@@ -120,9 +208,13 @@ body {
 }
 
 /* Sections claires posées dans un site à dominante noire. */
-.sec-claire {
-  background: var(--color-casse);
-  color: var(--color-noir);
+/* En couche `components` : un utilitaire `bg-*` peut changer le fond clair
+   (gris chaud, gris froid…) sans perdre le reste du traitement. */
+@layer components {
+  .sec-claire {
+    background: var(--color-casse);
+    color: var(--color-noir);
+  }
 }
 /* Filet par défaut en sections claires — en couche base, pour que les
    utilitaires `border-*` gardent la main. */

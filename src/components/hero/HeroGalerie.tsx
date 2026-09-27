@@ -221,15 +221,18 @@ export function HeroGalerie() {
           <article
             key={e.id}
             id={`etape-${e.id}`}
+            data-univers={e.id}
             className="galerie-bloc flex items-end pb-[14svh] lg:items-center lg:pb-0"
           >
             <Container>
               <div className="galerie-texte pointer-events-auto max-w-[36rem]">
+                {/* L'accent de l'étape porte sur le repère, le filet et le
+                    lien — jamais sur le titre, qui reste blanc. */}
                 <p className="label flex items-center gap-4 text-plomb-clair">
-                  <span className="tnum text-blanc">
+                  <span className="tnum text-accent-texte">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span aria-hidden="true" className="block h-px w-10 bg-blanc/30" />
+                  <span aria-hidden="true" className="block h-px w-10 bg-accent-texte/70" />
                   <span className="tnum">{total}</span>
                 </p>
                 <h2 className="h-display mt-6 text-[clamp(2.75rem,5.6vw,6.5rem)] text-blanc">
@@ -243,7 +246,7 @@ export function HeroGalerie() {
                 </p>
                 <Link
                   href={`/services#${e.service}`}
-                  className="group/lien mt-8 inline-flex items-center gap-3 border-b border-blanc/40 pb-1.5 text-[14px] font-medium text-blanc transition-colors duration-500 hover:border-blanc"
+                  className="group/lien mt-8 inline-flex items-center gap-3 border-b border-accent-texte/60 pb-1.5 text-[14px] font-medium text-blanc transition-colors duration-500 hover:border-accent-texte hover:text-accent-texte"
                 >
                   En savoir plus
                   <ArrowIcon className="transition-transform duration-500 group-hover/lien:translate-x-1" />
@@ -257,7 +260,9 @@ export function HeroGalerie() {
                   alt={e.visuel.alt}
                   loading="lazy"
                   decoding="async"
-                  className="galerie-visuel mt-8 w-full max-w-[34rem]"
+                  width={1440}
+                  height={810}
+                  className="galerie-visuel mt-8 h-auto w-full max-w-[34rem]"
                 />
               </div>
             </Container>

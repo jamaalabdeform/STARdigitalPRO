@@ -132,6 +132,19 @@ référence.
   particules.
 - Photos métier passées en noir et blanc (`.photo-nb`).
 
+### Couleur contextuelle — la marque reste monochrome, le contenu vit
+
+- Visuels couleur (`design/masters/couleur/`, source de vérité) : les 6 du
+  hero et 4 photos secteurs, recadrées au-dessus du texte qu'elles
+  incrustaient.
+- `data-univers` fixe un accent par section ou par page (métiers, étapes du
+  hero) ; couleurs fonctionnelles dans les maquettes (statuts CRM, sélection,
+  flux actif, confirmation). Détail : `BRAND.md` § 2 bis.
+- Accueil : Offre 360° sur fond clair, métiers en grands visuels couleur,
+  parcours sur gris chaud. Pages métier : photo couleur et bouton à l'accent
+  du métier.
+- Image de partage : photo couleur, logo noir et blanc.
+
 ---
 
 ## Hero d'accueil : galerie 3D
@@ -147,11 +160,12 @@ IA — chacune avec un visuel, un titre et une courte description.
   du site reprend après la sixième étape.
 - **Contenu :** `etapesHero` dans `src/lib/content.ts`. Tout le texte est du
   HTML rendu côté serveur (indexable, lisible sans JavaScript).
-- **Visuels :** `public/hero/*.webp`, campagne noir et blanc fournie par
-  STAR DIGI PRO (sources PNG 1586 × 992). Converties en WebP 1440 × 900
-  (50–100 Ko), niveaux de gris, bords fondus en transparence pour se mêler au
-  noir de la scène. Pour en remplacer un : format 16:10, fond sombre, aucun
-  texte dans l'image.
+- **Visuels :** `public/hero/*.webp`, campagne couleur fournie par STAR DIGI
+  PRO (masters PNG 1600 × 900 dans `design/masters/couleur/`). Convertis en
+  WebP 1440 × 810 (40–80 Ko), bords fondus en transparence pour se mêler au
+  noir de la scène. Une seule source WebP, partagée par la texture 3D et
+  l'image de repli (déjà en cache) ; l'AVIF est réservé aux photos secteurs,
+  servies par `next/image` (`images.formats` dans `next.config.ts`).
 - **Performance :** three.js (~850 Ko non compressés) n'est chargé qu'à la
   première interaction (défilement, souris, doigt, clavier). Le premier
   affichage n'en dépend pas ; le rendu s'arrête quand le hero sort de l'écran.
@@ -218,11 +232,11 @@ Ces modules sont étiquetés « Démonstration » partout où ils apparaissent.
 
   | Page | Perf. | Access. | Bonnes pratiques | SEO |
   |---|---|---|---|---|
-  | `/` (avec galerie 3D) | 95 | 100 | 100 | 100 |
+  | `/` (avec galerie 3D) | 97 | 100 | 100 | 100 |
   | `/services` | 98 | 100 | 100 | 100 |
-  | `/realisations` | 99 | 100 | 100 | 100 |
+  | `/realisations` | 98 | 100 | 100 | 100 |
   | `/a-propos` | 96 | 100 | 100 | 100 |
   | `/contact` | 98 | 100 | 100 | 100 |
-  | `/solutions/restaurants` | 98 | 100 | 100 | 100 |
+  | `/solutions/restaurants` | 95 | 100 | 100 | 100 |
 
 Non vérifié : le rendu sur appareils physiques.

@@ -14,7 +14,7 @@ export function AutomationFlow() {
           Scénario automatisé
         </span>
         <span className="flex items-center gap-1.5 text-[11px] text-noir">
-          <span className="h-1.5 w-1.5 rounded-full bg-noir" />
+          <span className="h-1.5 w-1.5 rounded-full bg-vert" />
           Actif
         </span>
       </div>
@@ -57,9 +57,10 @@ function Node({
   compact?: boolean;
 }) {
   const accent = {
-    trigger: "border-l-blanc",
-    wait: "border-l-plomb/50",
-    action: "border-l-blanc",
+    /* Flux actif en orange brûlé ; l'attente reste neutre. */
+    trigger: "border-l-braise",
+    wait: "border-l-plomb/40",
+    action: "border-l-braise",
   }[kind];
 
   return (
@@ -90,7 +91,7 @@ function Connector() {
     >
       <svg
         viewBox="0 0 24 24"
-        className="h-5 w-5 rotate-90 text-noir/25 sm:rotate-0"
+        className="h-5 w-5 rotate-90 text-braise/70 sm:rotate-0"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.4"

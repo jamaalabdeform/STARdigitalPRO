@@ -65,21 +65,24 @@ export default async function VerticalPage({
   const others = verticalPages.filter((v) => v.slug !== vertical.slug);
 
   return (
-    <>
-      {/* Hero — bandeau d'ambiance du secteur, issu de la charte */}
+    /* L'univers du métier fixe l'accent de toute la page (voir globals.css). */
+    <div data-univers={univers.univers}>
+      {/* Hero — photographie du métier, en couleur */}
       <section className="relative overflow-hidden pb-16 pt-32 sm:pt-40">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[340px]">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-[460px] sm:h-[520px]"
+        >
           <Image
             src={univers.photo}
             alt=""
-            width={720}
-            height={188}
+            fill
             sizes="100vw"
             loading="eager"
             fetchPriority="high"
-            className="h-full w-full object-cover opacity-30"
+            className="object-cover opacity-70 saturate-[0.9]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-noir/55 via-noir/85 to-noir" />
+          <div className="absolute inset-0 bg-gradient-to-b from-noir/40 via-noir/80 to-noir" />
         </div>
 
         <Container className="relative">
@@ -88,9 +91,12 @@ export default async function VerticalPage({
               <Entree>
                 <div className="mb-6 flex items-center gap-4">
                   <Pastille>
-                    <BrandIcon name={vertical.slug as NomSecteur} className="h-6 w-6" />
+                    <BrandIcon
+                      name={vertical.slug as NomSecteur}
+                      className="h-6 w-6"
+                    />
                   </Pastille>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blanc">
+                  <span className="label text-accent-texte">
                     Solutions · {vertical.label}
                   </span>
                 </div>
@@ -112,7 +118,7 @@ export default async function VerticalPage({
               </Entree>
               <Entree delay={0.18}>
                 <div className="mt-9 flex flex-wrap gap-3">
-                  <Button href="/contact" size="lg">
+                  <Button href="/contact" size="lg" variant="accent">
                     {vertical.cta}
                     <ArrowIcon />
                   </Button>
@@ -256,6 +262,6 @@ export default async function VerticalPage({
           </Reveal>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

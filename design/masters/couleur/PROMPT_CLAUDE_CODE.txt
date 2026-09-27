@@ -1,0 +1,48 @@
+MISSION — INTÉGRER LES NOUVEAUX VISUELS COULEUR STAR DIGI PRO
+
+Tu as reçu le dossier STAR_DIGI_PRO_Color_Visuals.
+Utilise ces fichiers comme source de vérité visuelle et ne génère pas de nouveaux assets.
+
+HERO
+01_hero_identite.png -> IDENTITÉ
+02_hero_site.png -> SITE
+03_hero_reservation.png -> RÉSERVATION
+04_hero_crm.png -> CRM
+05_hero_automatisation.png -> AUTOMATISATION
+06_hero_ia.png -> IA
+
+SECTEURS
+07_sector_restaurant.png
+08_sector_barber.png
+09_sector_beaute.png
+10_sector_automobile.png
+
+RÈGLES
+- La marque reste noir/blanc/gris; la couleur vient du contenu.
+- Logo, navigation, typographie et structure restent monochromes.
+- Aucun glow, gradient violet, particules ou effet 3D décoratif.
+- Ne pas ajouter de texte directement dans les images; les titres et CTA restent en HTML/CSS.
+- HERO sur fond #050505; les images introduisent progressivement la couleur.
+- Préserver la progression Identité -> Site -> Réservation -> CRM -> Automatisation -> IA.
+- Utiliser les visuels secteurs comme grands moments éditoriaux, pas comme mini-vignettes.
+- Optimiser en AVIF + WebP; garder les PNG masters.
+- Conserver prefers-reduced-motion, responsive, Lighthouse et fluidité.
+
+INTENTION COULEUR
+Identité: bordeaux profond très contrôlé.
+Site: bois, peau, cuivre/laiton, lumière chaude naturelle.
+Réservation: neutre + bleu fonctionnel + vert confirmation.
+CRM: neutre + bleu / ambre / vert pour les statuts.
+Automatisation: neutre + orange brûlé sur le flux actif + vert confirmation.
+IA: neutre + bleu minéral / vert froid discret.
+Restaurant: vin / terracotta / olive / crème.
+Barber: noyer / cuivre / crème / peau naturelle.
+Beauté: sauge / nude / ivoire.
+Automobile: bleu acier / graphite / rouge profond.
+
+IMPORTANT
+- Ne reconstruis pas le site.
+- Ne recolore pas le logo.
+- Ne remets pas une couleur d'accent unique partout.
+- La structure doit rester premium, calme et éditoriale.
+- La couleur doit augmenter la projection métier et la compréhension.

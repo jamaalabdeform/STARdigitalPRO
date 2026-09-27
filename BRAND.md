@@ -7,6 +7,9 @@ et fixe les règles à respecter pour toute page ajoutée ensuite.
 > **Principe.** Le premium ne se démontre pas, il se ressent. Pas d'or, pas de
 > halo, pas de dégradé décoratif, pas de 3D gratuite. La tenue vient de la
 > proportion, de la typographie, de l'espace, du contraste et de la précision.
+>
+> **La marque reste monochrome. Le contenu vit en couleur.** Le noir et le blanc
+> construisent la marque ; la couleur raconte le business (§ 2 bis).
 
 ---
 
@@ -79,13 +82,13 @@ CSS — **il n'y a pas de `tailwind.config.js`**.
 `vert` (`#1F9D6B`) et `alerte` (`#E5484D`) sont des rôles **fonctionnels**
 (succès, erreur de formulaire), hors identité.
 
-**Aucune couleur d'accent.** La charte fonctionne sans. Si un accent est un
-jour ajouté, il reste sous 5 % de la surface et ne devient jamais la marque.
+Pas de couleur de marque unique : le logo, la navigation, la typographie et
+la structure restent neutres. La couleur est contextuelle (§ 2 bis).
 
 ### Proportions
 
-Noir ~70 % · blanc cassé ~20 % (sections de respiration) · gris et blanc pour
-le texte et les filets.
+70 % neutres · 20 % de couleur apportée par la photographie et les matières ·
+10 % d'accents (CTA métier, états, sélection, progression).
 
 ### Contrastes — non négociables
 
@@ -96,6 +99,75 @@ le texte et les filets.
 
 Tous deux tiennent 4,5:1 jusque sur `graphite` et `gris-clair`. Vérifié par
 axe-core sur les 10 routes (§ 9).
+
+---
+
+## 2 bis. Couleur contextuelle
+
+La couleur n'est jamais décorative : elle vient de la photographie, des
+univers métier et des interfaces. **Un seul accent principal par section** ;
+deux ou trois couleurs fonctionnelles au maximum dans une même interface.
+
+### Mécanisme
+
+`data-univers="…"` sur une section (ou une page) redéfinit trois variables,
+lues par les utilitaires `bg-accent`, `text-accent-texte`, `border-accent`… :
+
+| Variable | Usage |
+|---|---|
+| `--accent` | aplats, boutons, filets |
+| `--accent-texte` | accent lisible sur fond sombre (≥ 4,5:1 sur `#050505`) |
+| `--accent-encre` | texte posé sur un aplat `--accent` |
+
+Sans `data-univers`, l'accent vaut blanc : la marque, neutre.
+
+### Univers métier
+
+| `data-univers` | Accent | Famille |
+|---|---|---|
+| `restaurant` | `#A94F35` terracotta | vin `#6E1F2A`, olive `#5E6B45`, crème `#E8DCC8` |
+| `barber` | `#8E4F2B` cuivre sombre | noyer `#4A352D`, ambre `#D49A4A` |
+| `beaute` | `#D7B6A5` nude | sauge `#A8B5A2`, rose poudré `#D9BFC2`, ivoire `#EEE9E2` |
+| `automobile` | `#35506B` bleu acier | rouge profond `#7A232C`, argent `#A7ADB5` |
+
+### Étapes du hero
+
+| Étape | Accent | Intention |
+|---|---|---|
+| `identite` | bordeaux `#6E1F2A` (texte `#CF6173`) | un univers de marque |
+| `site` | cuivre `#B66A3C` | bois, peau, lumière chaude |
+| `reservation` | bleu `#4B78FF` | sélection, confirmation |
+| `crm` | ambre `#C08A2E` | statuts |
+| `automatisation` | orange brûlé `#D26A2E` | flux actif |
+| `ia` | bleu minéral `#354A63` (texte `#6FA3B0`) | intelligence discrète |
+
+L'introduction du hero reste noir et blanc ; la couleur arrive avec la
+première étape. L'accent porte le repère, le filet et le lien — **jamais le
+titre**.
+
+### Couleurs fonctionnelles (interfaces)
+
+| Token | Valeur | État |
+|---|---|---|
+| `info` | `#3A64E6` | nouveau, sélection (texte blanc 5:1) |
+| `indigo` | `#7867FF` | qualifié |
+| `ambre` | `#C08A2E` | proposition, attente |
+| `vert` | `#2E9E68` | succès, confirmation |
+| `braise` | `#D26A2E` | flux actif |
+| `mineral` | `#354A63` | IA |
+
+### Fonds de respiration
+
+`casse` `#F4F3EF` · `gris-chaud` `#ECEAE5` · `gris-froid` `#E9EDF0` ·
+`rose-pale` `#EFE8E3`. Varier le rythme ; jamais d'alternance mécanique noir /
+blanc. `.sec-claire` accepte un utilitaire de fond :
+`<section className="sec-claire bg-gris-chaud">`.
+
+### Interdits
+
+Titres en couleur · logo en couleur · icônes multicolores · dégradés bleu →
+violet, violet → rose, orange → rose · néon · plusieurs accents dans la même
+section · recolorer artificiellement une photo.
 
 ---
 
@@ -152,16 +224,20 @@ dorées, liserés or.
 
 ## 6. Direction image
 
-- **Noir et blanc**, contrasté, cinématographique, grain léger.
+- **Couleur réelle**, jamais recolorée : bois, peau, cuivre, métal, lumière
+  naturelle. Contraste premium, saturation contenue, noirs profonds, pas de
+  look HDR.
 - Documentaire premium : gestes métier, matières, architectures, objets.
 - Jamais de sourire publicitaire face caméra, jamais de photo générique de
   bureau.
 - Les six visuels du hero (`public/hero/`) forment une campagne : même
   lumière, même contraste, même profondeur. Ils ne contiennent aucun titre —
   les textes sont en HTML.
+- Masters PNG : `design/masters/couleur/` (source de vérité, non publiés).
 
-Pour remplacer un visuel du hero : format 16:10, fond sombre, puis conversion
-en WebP 1440 × 900 avec bords fondus en transparence (voir README).
+Pour remplacer un visuel : format 16:9, fond sombre, aucun texte incrusté ;
+conversion en WebP 1440 × 810 à bords fondus (hero) ou recadrage 1600 × 530
+(secteurs) — voir README.
 
 ---
 
@@ -213,6 +289,7 @@ déplacement de la flèche.
 | Variante | Contexte |
 |---|---|
 | `primary` *(défaut)* | Plein blanc, **sur fond sombre** — action principale |
+| `accent` | Aplat à l'accent de l'univers — **pages métier uniquement** |
 | `outline` | Contour clair, **sur fond sombre** |
 | `dark` | Plein noir, **sur fond clair** |
 | `outlineDark` | Contour sombre, **sur fond clair** |
@@ -264,7 +341,7 @@ npx eslint src --max-warnings=0
 
 | Élément | Impact |
 |---|---|
-| **Photographies réelles** par secteur | Les vignettes actuelles sont petites (720 × 188), passées en noir et blanc |
+| **Photographies secteurs en haute définition** | Les masters actuels semblent agrandis : un peu doux en plein écran |
 | **Coordonnées** (e-mail, téléphone, adresse) | Actuellement masquées faute de données |
 | **Destination du formulaire** (`CONTACT_WEBHOOK_URL`) | Le formulaire annonce qu'il n'est pas relié |
 | **Identifiants analytics** | Aucun script posé, pas d'ID fictif |
