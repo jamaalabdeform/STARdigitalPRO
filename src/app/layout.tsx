@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { site } from "@/lib/site";
 
-/* Plus Jakarta Sans est la typographie imposée par la charte de marque.
-   Servie en local par next/font : aucune requête vers un tiers. */
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+/* Inter : alternative libre à Suisse Int'l, retenue par la charte noir / blanc.
+   Police variable (toutes graisses en un fichier), servie en local par
+   next/font : aucune requête vers un tiers. */
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -62,7 +62,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${jakarta.variable} h-full antialiased`}>
+    <html lang="fr" className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         {/* Marque <html> avant le premier rendu : les apparitions au défilement
             ne sont masquées que si le JavaScript tourne réellement. */}
@@ -73,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <a
           href="#contenu"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-or focus:px-5 focus:py-3 focus:font-medium focus:text-noir"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-blanc focus:px-5 focus:py-3 focus:font-medium focus:text-noir"
         >
           Aller au contenu
         </a>

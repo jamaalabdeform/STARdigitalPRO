@@ -23,7 +23,7 @@ export function ChatJawabot() {
           <p className="text-[12.5px] font-medium text-noir">Jawabot</p>
           <p className="text-[10px] text-plomb">Répond 24 h/24</p>
         </div>
-        <span className="ml-auto text-[10px] text-or-sombre">En ligne</span>
+        <span className="ml-auto text-[10px] text-noir">En ligne</span>
       </div>
 
       <div className="space-y-2.5 px-4 py-4">
@@ -38,11 +38,11 @@ export function ChatJawabot() {
           juste votre prénom et votre numéro.
         </Msg>
 
-        <div className="!mt-4 flex items-center gap-2 rounded-lg border border-or/25 bg-or-voile px-3 py-2.5">
-          <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0 text-or-sombre" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <div className="!mt-4 flex items-center gap-2 rounded-lg border border-noir/10 bg-gris-clair px-3 py-2.5">
+          <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0 text-noir" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 8.5l3.5 3.5L13 5" />
           </svg>
-          <p className="text-[11px] leading-snug text-or-sombre">
+          <p className="text-[11px] leading-snug text-noir">
             Demande qualifiée et transmise au CRM
           </p>
         </div>
@@ -52,8 +52,8 @@ export function ChatJawabot() {
         <div className="flex-1 rounded-full border border-noir/12 px-3.5 py-2 text-[11px] text-plomb">
           Écrire un message…
         </div>
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-or">
-          <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 text-noir" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-noir">
+          <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 text-blanc" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 8h9M8.5 4l4 4-4 4" />
           </svg>
         </span>
@@ -76,7 +76,7 @@ function Msg({
         className={`max-w-[84%] rounded-2xl px-3.5 py-2.5 text-[11.5px] leading-snug ${
           isClient
             ? "rounded-br-md bg-noir text-blanc"
-            : "rounded-bl-md bg-gris-2 text-noir"
+            : "rounded-bl-md bg-gris-clair text-noir"
         }`}
       >
         {children}

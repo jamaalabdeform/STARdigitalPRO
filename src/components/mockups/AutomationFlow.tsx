@@ -13,8 +13,8 @@ export function AutomationFlow() {
         <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-plomb">
           Scénario automatisé
         </span>
-        <span className="flex items-center gap-1.5 text-[11px] text-or-sombre">
-          <span className="h-1.5 w-1.5 rounded-full bg-or" />
+        <span className="flex items-center gap-1.5 text-[11px] text-noir">
+          <span className="h-1.5 w-1.5 rounded-full bg-noir" />
           Actif
         </span>
       </div>
@@ -57,9 +57,9 @@ function Node({
   compact?: boolean;
 }) {
   const accent = {
-    trigger: "border-l-or",
+    trigger: "border-l-blanc",
     wait: "border-l-plomb/50",
-    action: "border-l-or",
+    action: "border-l-blanc",
   }[kind];
 
   return (
@@ -67,7 +67,7 @@ function Node({
        empile deux : sans centrage vertical, leur texte reste collé en haut et
        laisse une grande zone vide. */
     <div
-      className={`flex flex-1 flex-col justify-center rounded-lg border border-noir/10 border-l-[3px] bg-gris/60 px-3.5 ${
+      className={`flex flex-1 flex-col justify-center rounded-lg border border-noir/10 border-l-[3px] bg-casse/60 px-3.5 ${
         compact ? "py-2.5" : "py-3.5"
       } ${accent}`}
     >

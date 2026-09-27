@@ -26,9 +26,9 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-or/25 bg-or-voile p-8">
+      <div className="border border-noir/15 bg-gris-clair p-8">
         <p className="h-section text-[22px] text-noir">Demande reçue.</p>
-        <p className="mt-3 max-w-[52ch] text-[15px] leading-relaxed text-anthracite/80">
+        <p className="mt-3 max-w-[52ch] text-[15px] leading-relaxed text-graphite/80">
           {state.message}
         </p>
       </div>
@@ -102,7 +102,7 @@ export function ContactForm() {
       <div className="flex min-w-0 flex-col gap-2">
         <label
           htmlFor={`${uid}-message`}
-          className="text-[13px] font-medium text-anthracite"
+          className="text-[13px] font-medium text-graphite"
         >
           Votre projet en quelques lignes
         </label>
@@ -122,7 +122,7 @@ export function ContactForm() {
       {state.status === "error" || state.status === "unconfigured" ? (
         <p
           role="alert"
-          className="rounded-xl border border-alerte/40 bg-alerte/10 px-4 py-3 text-[13.5px] leading-relaxed text-noir"
+          className="border border-alerte/40 bg-alerte/10 px-4 py-3 text-[13.5px] leading-relaxed text-noir"
         >
           {state.message}
         </p>
@@ -132,7 +132,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-or px-7 py-4 text-[15px] font-semibold text-noir transition-colors duration-300 hover:bg-or-clair disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-3 border border-noir bg-noir px-7 py-4 text-[15px] font-medium text-blanc transition-colors duration-500 hover:bg-transparent hover:text-noir disabled:cursor-not-allowed disabled:opacity-60"
         >
           {pending ? "Envoi en cours…" : "Envoyer ma demande"}
         </button>
@@ -150,7 +150,7 @@ export function ContactForm() {
    comme largeur minimale celle de son option la plus longue, ce qui élargit la
    piste de grille et fait déborder toute la colonne sur petit écran. */
 const controlClass =
-  "w-full min-w-0 rounded-xl border border-noir/18 bg-blanc px-4 py-3 text-[15px] text-noir outline-none transition-colors duration-300 placeholder:text-plomb/70 focus:border-or";
+  "w-full min-w-0 border border-noir/18 bg-blanc px-4 py-3 text-[15px] text-noir outline-none transition-colors duration-300 placeholder:text-plomb/70 focus:border-noir";
 
 function Field({
   id,
@@ -173,7 +173,7 @@ function Field({
 }) {
   return (
     <div className="flex min-w-0 flex-col gap-2">
-      <label htmlFor={id} className="text-[13px] font-medium text-anthracite">
+      <label htmlFor={id} className="text-[13px] font-medium text-graphite">
         {label}
         {required ? <span className="text-alerte"> *</span> : null}
       </label>
@@ -211,7 +211,7 @@ function Select({
 }) {
   return (
     <div className="flex min-w-0 flex-col gap-2">
-      <label htmlFor={id} className="text-[13px] font-medium text-anthracite">
+      <label htmlFor={id} className="text-[13px] font-medium text-graphite">
         {label}
       </label>
       <select

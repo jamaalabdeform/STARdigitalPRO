@@ -53,16 +53,16 @@ export const site = {
   },
 
   cta: {
-    primary: "Demander un audit",
+    primary: "Parler de votre projet",
     secondary: "Découvrir nos solutions",
-    project: "Parler de mon projet",
+    project: "Parler de votre projet",
   },
 } as const;
 
 export const nav = [
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
-  { href: "/a-propos", label: "À propos" },
+  { href: "/a-propos", label: "Studio" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

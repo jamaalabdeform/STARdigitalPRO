@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Container, Button, ArrowIcon } from "@/components/ui/primitives";
 import { Entree } from "@/components/ui/Entree";
-import { Sparkle, HaloOr, TrameOr } from "@/components/brand/Motifs";
 import { etapesHero } from "@/lib/content";
 import { site } from "@/lib/site";
 
@@ -110,10 +109,7 @@ export function HeroGalerie() {
       aria-label="Présentation de STAR DIGI PRO en six étapes"
     >
       {/* ── Couche fixe : scène 3D + navigation ─────────────────────────── */}
-      <div className="galerie-scene sticky top-0 h-svh overflow-hidden">
-        <TrameOr />
-        <HaloOr className="-left-40 -top-40" size={640} />
-
+      <div className="galerie-scene grain sticky top-0 h-svh overflow-hidden">
         {mode === "immersif" && pret ? (
           <GalerieScene
             visuels={visuels}
@@ -144,14 +140,14 @@ export function HeroGalerie() {
                   type="button"
                   onClick={() => allerA(i)}
                   aria-current={etape === i ? "step" : undefined}
-                  className={`group flex items-center gap-2 rounded-full px-2 py-2 text-[11px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
-                    etape === i ? "text-or" : "text-plomb-clair hover:text-blanc"
+                  className={`group flex items-center gap-2 px-2 py-2 text-[11px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
+                    etape === i ? "text-blanc" : "text-plomb-clair hover:text-blanc"
                   }`}
                 >
                   <span
                     aria-hidden="true"
                     className={`block h-px transition-[width,background-color] duration-500 ${
-                      etape === i ? "w-8 bg-or" : "w-4 bg-current"
+                      etape === i ? "w-8 bg-blanc" : "w-4 bg-current"
                     }`}
                   />
                   <span className="sr-only sm:not-sr-only">{e.titre}</span>
@@ -165,33 +161,37 @@ export function HeroGalerie() {
       {/* ── Couche défilante : un écran par bloc ─────────────────────────── */}
       <div className="galerie-pistes pointer-events-none relative z-10">
         {/* Introduction */}
-        <div className="galerie-bloc flex items-end pb-[16svh] lg:items-center lg:pb-0">
+        <div className="galerie-bloc flex items-end pb-[11svh] pt-24 lg:items-center lg:pb-0 lg:pt-0">
           <Container>
-            <div className="pointer-events-auto max-w-[40rem]">
+            <div className="pointer-events-auto max-w-[62rem]">
               <Entree>
-                <p className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-plomb-clair">
-                  {site.domaines.map((d, i) => (
-                    <span key={d} className="flex items-center gap-3">
-                      {i > 0 ? <Sparkle className="h-2 w-1.5 text-or" /> : null}
-                      {d}
-                    </span>
-                  ))}
+                <p className="label mb-8 hidden items-center gap-4 text-plomb-clair sm:flex">
+                  {site.name}
+                  <span aria-hidden="true" className="block h-px w-10 bg-blanc/30" />
+                  Studio digital 360°
                 </p>
               </Entree>
               <Entree delay={0.06}>
-                <h1 className="h-display text-[clamp(2.3rem,5.4vw,4.3rem)] text-blanc">
+                <h1 className="h-display text-[clamp(2.6rem,7vw,8.25rem)] text-blanc">
                   De la première vue
                   <br />
-                  à la <span className="mot-or">première vente.</span>
+                  <span className="mot-accent">à la première vente.</span>
                 </h1>
               </Entree>
               <Entree delay={0.12}>
-                <p className="mt-7 max-w-[52ch] text-[clamp(1.02rem,1.35vw,1.2rem)] leading-relaxed text-plomb-clair">
-                  {site.promesse} Six briques, assemblées selon votre activité.
+                <p className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-1 text-[clamp(1rem,1.3vw,1.18rem)] text-blanc">
+                  {["Communication.", "Design.", "Digital.", "Automatisation."].map(
+                    (m) => (
+                      <span key={m}>{m}</span>
+                    ),
+                  )}
+                </p>
+                <p className="mt-3 max-w-[48ch] text-[clamp(0.98rem,1.2vw,1.08rem)] leading-relaxed text-plomb-clair">
+                  {site.promesse}
                 </p>
               </Entree>
               <Entree delay={0.18}>
-                <div className="mt-9 flex flex-wrap gap-3">
+                <div className="mt-10 flex flex-wrap gap-3">
                   <Button href="/contact" size="lg">
                     {site.cta.primary}
                     <ArrowIcon />
@@ -202,14 +202,14 @@ export function HeroGalerie() {
                 </div>
               </Entree>
               <Entree delay={0.3}>
-                <p className="galerie-indice mt-10 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.22em] text-plomb-clair">
+                <p className="galerie-indice label mt-10 flex items-center sm:mt-12 gap-4 text-plomb-clair">
                   <span
                     aria-hidden="true"
-                    className="relative block h-8 w-px overflow-hidden bg-blanc/15"
+                    className="relative block h-9 w-px overflow-hidden bg-blanc/15"
                   >
-                    <span className="absolute inset-x-0 top-0 h-3 bg-or motion-safe:animate-[indice_2.2s_ease-in-out_infinite]" />
+                    <span className="absolute inset-x-0 top-0 h-3 bg-blanc motion-safe:animate-[indice_2.4s_var(--ease-soft)_infinite]" />
                   </span>
-                  Défilez · {etapesHero.length} étapes
+                  Six étapes · faites défiler
                 </p>
               </Entree>
             </div>
@@ -224,26 +224,29 @@ export function HeroGalerie() {
             className="galerie-bloc flex items-end pb-[14svh] lg:items-center lg:pb-0"
           >
             <Container>
-              <div className="galerie-texte pointer-events-auto max-w-[30rem]">
-                <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-or">
-                  <span className="tnum">
-                    {String(i + 1).padStart(2, "0")} / {total}
+              <div className="galerie-texte pointer-events-auto max-w-[36rem]">
+                <p className="label flex items-center gap-4 text-plomb-clair">
+                  <span className="tnum text-blanc">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span aria-hidden="true" className="block h-px w-8 bg-or/50" />
-                  Démonstration
+                  <span aria-hidden="true" className="block h-px w-10 bg-blanc/30" />
+                  <span className="tnum">{total}</span>
                 </p>
-                <h2 className="h-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-blanc">
+                <h2 className="h-display mt-6 text-[clamp(2.75rem,5.6vw,6.5rem)] text-blanc">
                   {e.titre}
                 </h2>
-                <p className="mt-4 max-w-[42ch] text-[clamp(1rem,1.25vw,1.15rem)] leading-relaxed text-plomb-clair">
+                <p className="mt-6 text-[clamp(1.2rem,1.7vw,1.55rem)] font-medium leading-snug tracking-[-0.02em] text-blanc">
+                  {e.concept}
+                </p>
+                <p className="mt-3 max-w-[44ch] text-[clamp(0.98rem,1.15vw,1.08rem)] leading-relaxed text-plomb-clair">
                   {e.description}
                 </p>
                 <Link
                   href={`/services#${e.service}`}
-                  className="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-blanc underline decoration-or/60 underline-offset-[6px] transition-colors hover:text-or"
+                  className="group/lien mt-8 inline-flex items-center gap-3 border-b border-blanc/40 pb-1.5 text-[14px] font-medium text-blanc transition-colors duration-500 hover:border-blanc"
                 >
                   En savoir plus
-                  <ArrowIcon />
+                  <ArrowIcon className="transition-transform duration-500 group-hover/lien:translate-x-1" />
                 </Link>
                 {/* Visuel en image simple : affiché en mode statique ; en mode
                     immersif, conservé pour les lecteurs d'écran (même URL que

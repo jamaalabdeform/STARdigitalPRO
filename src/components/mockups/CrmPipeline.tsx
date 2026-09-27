@@ -26,7 +26,7 @@ export function CrmPipeline() {
     },
     {
       title: "Devis envoyé",
-      tone: "or" as const,
+      tone: "accent" as const,
       cards: [{ label: "Boutique · Tournai", meta: "Relance J+3 programmée" }],
     },
     {
@@ -58,14 +58,14 @@ export function CrmPipeline() {
             <div className="mb-2.5 flex items-center gap-1.5">
               <span
                 className={`h-1.5 w-1.5 rounded-full ${
-                  col.tone === "or"
-                    ? "bg-or"
+                  col.tone === "accent"
+                    ? "bg-noir"
                     : col.tone === "vert"
                       ? "bg-vert"
                       : "bg-plomb/50"
                 }`}
               />
-              <span className="text-[10.5px] font-medium text-anthracite">
+              <span className="text-[10.5px] font-medium text-graphite">
                 {col.title}
               </span>
             </div>
@@ -74,7 +74,7 @@ export function CrmPipeline() {
               {col.cards.map((card) => (
                 <div
                   key={card.label}
-                  className="rounded-lg border border-noir/10 bg-gris/60 px-2.5 py-2"
+                  className="rounded-lg border border-noir/10 bg-casse/60 px-2.5 py-2"
                 >
                   <p className="text-[10.5px] font-medium leading-tight text-noir">
                     {card.label}
@@ -91,7 +91,7 @@ export function CrmPipeline() {
 
       <div className="flex items-center gap-4 border-t border-noir/10 px-5 py-2.5 text-[10.5px] text-plomb">
         <span>Source : site, WhatsApp, appel</span>
-        <span className="ml-auto text-or-sombre">Relances automatiques actives</span>
+        <span className="ml-auto text-noir">Relances automatiques actives</span>
       </div>
     </div>
   );

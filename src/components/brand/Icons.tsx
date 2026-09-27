@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 /* ============================================================================
    Iconographie STAR DIGI PRO
    Trait fin, extrémités arrondies, grille 24×24, couleur héritée (`currentColor`)
-   pour se poser aussi bien en or sur fond noir qu'en encre sur fond clair.
+   pour se poser aussi bien en blanc sur fond noir qu'en noir sur fond clair.
    Reprend les deux familles de la charte : icônes de prestation et icônes
    sectorielles.
    ============================================================================ */

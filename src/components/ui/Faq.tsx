@@ -20,7 +20,7 @@ export function Faq({
 
   const filet = clair ? "border-blanc/15" : "border-noir/15";
   const question = clair ? "text-blanc" : "text-noir";
-  const reponse = clair ? "text-plomb-clair" : "text-anthracite/80";
+  const reponse = clair ? "text-plomb-clair" : "text-graphite/80";
   const cercle = clair ? "border-blanc/25" : "border-noir/20";
 
   return (
@@ -31,12 +31,12 @@ export function Faq({
           className={`group border-b ${filet} [&_summary::-webkit-details-marker]:hidden`}
         >
           <summary
-            className={`flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-[clamp(1rem,1.6vw,1.15rem)] font-semibold ${question} transition-colors duration-300 hover:text-or`}
+            className={`flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-[clamp(1rem,1.6vw,1.15rem)] font-semibold ${question} transition-colors duration-300 hover:text-blanc`}
           >
             {item.q}
             <span
               aria-hidden="true"
-              className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border ${cercle} transition-transform duration-400 ease-[var(--ease-soft)] group-open:rotate-45`}
+              className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center border ${cercle} transition-transform duration-400 ease-[var(--ease-soft)] group-open:rotate-45`}
             >
               <svg
                 viewBox="0 0 12 12"

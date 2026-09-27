@@ -78,7 +78,7 @@ export default function RealisationsPage() {
             <Eyebrow>Réalisations</Eyebrow>
           </Entree>
           <Entree delay={0.06}>
-            <h1 className="h-display max-w-[19ch] text-[clamp(2.2rem,5vw,3.9rem)] text-blanc">
+            <h1 className="h-display max-w-[16ch] text-[clamp(2.75rem,6.4vw,6.5rem)] text-blanc">
               Démonstrations et concepts.
             </h1>
           </Entree>
@@ -120,7 +120,7 @@ export default function RealisationsPage() {
                         <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-plomb-clair">
                           {d.kind}
                         </span>
-                        <Pill tone="or">Démonstration</Pill>
+                        <Pill tone="accent">Démonstration</Pill>
                       </div>
                       <h2 className="h-section mt-4 max-w-[18ch] text-[clamp(1.5rem,2.8vw,2.2rem)] text-blanc">
                         {d.title}
@@ -144,7 +144,7 @@ export default function RealisationsPage() {
       <section className="pb-24">
         <Container>
           <Reveal>
-            <div className="grain relative overflow-hidden rounded-3xl bg-noir px-7 py-14 sm:px-12">
+            <div className="grain relative overflow-hidden bg-noir px-7 py-14 sm:px-12">
               <SectionHead
                 tone="clair"
                 title="Vous voulez voir ce que ça donnerait chez vous ?"

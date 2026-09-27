@@ -7,13 +7,14 @@
  */
 
 /* ------------------------------------------------ Hero : les six étapes --- */
-/* Galerie 3D de l'accueil. Visuels de démonstration fournis par STAR DIGI
-   PRO (public/hero/), recadrés sur la composition et fondus sur les bords.
-   Les établissements qui y figurent sont fictifs. */
+/* Galerie 3D de l'accueil : une campagne en six images noir et blanc, une idée
+   par étape (public/hero/). Visuels de démonstration — aucun client réel. */
 
 export type EtapeHero = {
   id: string;
   titre: string;
+  /** L'idée de l'étape, en une ligne. */
+  concept: string;
   description: string;
   visuel: { src: string; alt: string };
   /** Ancre de la page Services qui détaille l'étape. */
@@ -24,66 +25,72 @@ export const etapesHero: EtapeHero[] = [
   {
     id: "identite",
     titre: "Identité",
+    concept: "Une marque prend forme.",
     description:
-      "Un logo, une charte et des supports qui parlent d'une seule voix, de la devanture à l'écran du téléphone.",
+      "Logo, charte, supports : une identité qui parle d'une seule voix, de la devanture à l'écran du téléphone.",
     visuel: {
       src: "/hero/identite.webp",
-      alt: "Démonstration d'identité pour un restaurant fictif : logo, palette, typographies, cartes de visite, devanture et site mobile.",
+      alt: "Table de travail de directeur artistique : planches de logo monochrome, carte, menu et smartphone.",
     },
     service: "identite",
   },
   {
     id: "site",
     titre: "Site",
+    concept: "Votre business devient une expérience.",
     description:
       "Un site rapide, compris en dix secondes, construit pour faire passer à l'action : appeler, venir, réserver.",
     visuel: {
       src: "/hero/site.webp",
-      alt: "Démonstration d'un site de barber shop fictif sur tablette et mobile, avec sa fiche d'établissement : itinéraire, appel, réservation.",
+      alt: "Écran et smartphone affichant le site d'un barber shop, posés dans le salon.",
     },
     service: "web",
   },
   {
     id: "reservation",
     titre: "Réservation",
+    concept: "Un clic, un client.",
     description:
       "Vos clients choisissent leur créneau en ligne, à toute heure, sans passer par le téléphone.",
     visuel: {
       src: "/hero/reservation.webp",
-      alt: "Démonstration d'un module de réservation : choix de la date et du créneau, confirmation sur mobile et rappel envoyé la veille.",
+      alt: "Smartphone affichant un calendrier de réservation, posé sur une table de barbier à côté de ciseaux.",
     },
     service: "crm",
   },
   {
     id: "crm",
     titre: "CRM",
+    concept: "Plus aucun prospect ne se perd.",
     description:
-      "Chaque demande arrive au même endroit et se suit jusqu'à la vente. Plus rien ne se perd entre un carnet et WhatsApp.",
+      "Chaque demande arrive au même endroit et se suit jusqu'à la vente. Ordre, visibilité, contrôle.",
     visuel: {
       src: "/hero/crm.webp",
-      alt: "Démonstration d'un CRM : pipeline commercial en quatre colonnes sur ordinateur et notifications de nouvelles demandes sur mobile.",
+      alt: "Écran affichant un pipeline commercial en quatre colonnes, smartphone recevant une notification.",
     },
     service: "crm",
   },
   {
     id: "automatisation",
     titre: "Automatisation",
+    concept: "Votre business travaille sans vous.",
     description:
-      "Rappels, relances et demandes d'avis partent tout seuls, au bon moment, sans y penser.",
+      "Réservation, rappel, avis, fidélisation : chaque étape s'enchaîne au bon moment, sans y penser.",
     visuel: {
       src: "/hero/automatisation.webp",
-      alt: "Démonstration d'un scénario automatisé : rendez-vous terminé, attente de 48 h, demande d'avis par SMS ou WhatsApp, offre fidélité par e-mail, et notification de remerciement sur mobile.",
+      alt: "Quatre écrans alignés et reliés : réservation, rappel, demande d'avis, offre de fidélité.",
     },
     service: "automatisation",
   },
   {
     id: "ia",
     titre: "IA",
+    concept: "Un assistant qui travaille avec vous.",
     description:
-      "Un assistant qui répond à vos clients jour et nuit et qualifie les demandes avant qu'elles ne vous arrivent.",
+      "Il répond à vos clients jour et nuit, réserve le créneau et met votre CRM à jour. Simple, utile, invisible.",
     visuel: {
       src: "/hero/ia.webp",
-      alt: "Démonstration de l'assistant Jawabot : conversation de prise de rendez-vous, demande qualifiée et transmise au CRM.",
+      alt: "Smartphone posé sur un bureau sombre, affichant une conversation avec l'assistant de réservation.",
     },
     service: "ia",
   },

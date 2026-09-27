@@ -12,8 +12,8 @@ export default function NotFound() {
   return (
     <section className="pb-28 pt-40">
       <Container>
-        <p className="tnum text-[13px] text-or">404</p>
-        <h1 className="h-display mt-4 max-w-[16ch] text-[clamp(2.2rem,5vw,3.6rem)] text-blanc">
+        <p className="tnum text-[13px] text-blanc">404</p>
+        <h1 className="h-display mt-4 max-w-[14ch] text-[clamp(2.6rem,6vw,5.5rem)] text-blanc">
           Cette page n&apos;existe pas.
         </h1>
         <p className="mt-6 max-w-[48ch] text-[16px] leading-relaxed text-plomb-clair">
@@ -40,7 +40,7 @@ export default function NotFound() {
               <Link
                 key={v.slug}
                 href={`/solutions/${v.slug}`}
-                className="inline-flex items-center gap-2 rounded-full border border-blanc/20 px-4 py-2 text-[13.5px] text-blanc transition-colors duration-300 hover:border-or hover:bg-or hover:text-noir"
+                className="inline-flex items-center gap-2 border border-blanc/20 px-4 py-2 text-[13.5px] text-blanc transition-colors duration-300 hover:border-blanc hover:bg-blanc hover:text-noir"
               >
                 {v.navLabel}
                 <ArrowIcon />

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 import { Button, ArrowIcon } from "@/components/ui/primitives";
-import { nav, verticals } from "@/lib/site";
+import { nav, site, verticals } from "@/lib/site";
 
 export function Header() {
   const pathname = usePathname();
@@ -70,11 +70,11 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
         stuck || menuOpen
-          ? "border-b border-blanc/10 bg-noir/85 backdrop-blur-xl backdrop-saturate-150"
+          ? "border-b border-blanc/10 bg-noir/90 backdrop-blur-md"
           : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-[var(--gutter)] py-4">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-[var(--gutter)] py-4">
         <Link href="/" aria-label="STAR DIGI PRO — accueil" className="shrink-0">
           <Logo />
         </Link>
@@ -94,7 +94,7 @@ export function Header() {
               aria-expanded={solutionsOpen}
               aria-haspopup="true"
               onClick={() => setSolutionsOpen((v) => !v)}
-              className={`flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[14px] transition-colors duration-300 ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 text-[13.5px] transition-colors duration-300 ${
                 isActive("/solutions")
                   ? "text-blanc"
                   : "text-plomb-clair hover:text-blanc"
@@ -115,7 +115,7 @@ export function Header() {
             </button>
 
             {solutionsOpen ? (
-              <div className="absolute left-0 top-full z-10 mt-2 w-[330px] overflow-hidden rounded-2xl border border-blanc/12 bg-anthracite shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]">
+              <div className="absolute left-0 top-full z-10 mt-3 w-[330px] overflow-hidden border border-blanc/12 bg-noir">
                 {verticals.map((v) => (
                   <Link
                     key={v.slug}
@@ -153,7 +153,9 @@ export function Header() {
               `inline-flex`, et à specificité égale c'est l'ordre dans la feuille
               qui tranche — le masquage ne serait pas garanti. */}
           <span className="hidden sm:contents">
-            <Button href="/contact">Demander un audit</Button>
+            <Button href="/contact" variant="outline">
+              {site.cta.primary}
+            </Button>
           </span>
 
           <button
@@ -162,7 +164,7 @@ export function Header() {
             aria-expanded={menuOpen}
             aria-controls="menu-mobile"
             aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-blanc/20 text-blanc lg:hidden"
+            className="flex h-11 w-11 items-center justify-center border border-blanc/20 text-blanc lg:hidden"
           >
             <svg viewBox="0 0 20 20" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
               {menuOpen ? (
@@ -204,7 +206,7 @@ export function Header() {
             </div>
 
             <Button href="/contact" size="lg" className="mt-8 w-full">
-              Demander un audit
+              {site.cta.primary}
             </Button>
           </nav>
         </div>
@@ -226,7 +228,7 @@ function NavLink({
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`rounded-full px-3.5 py-2 text-[14px] transition-colors duration-300 ${
+      className={`px-3.5 py-2 text-[13.5px] transition-colors duration-300 ${
         active ? "text-blanc" : "text-plomb-clair hover:text-blanc"
       }`}
     >

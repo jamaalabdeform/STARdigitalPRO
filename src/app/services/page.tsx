@@ -28,7 +28,7 @@ export default function ServicesPage() {
             <Eyebrow>Services</Eyebrow>
           </Entree>
           <Entree delay={0.06}>
-            <h1 className="h-display max-w-[20ch] text-[clamp(2.2rem,5vw,3.9rem)] text-blanc">
+            <h1 className="h-display max-w-[16ch] text-[clamp(2.75rem,6.4vw,6.5rem)] text-blanc">
               Six briques. Assemblées selon votre activité.
             </h1>
           </Entree>
@@ -59,7 +59,7 @@ export default function ServicesPage() {
                 <li key={s.id}>
                   <a
                     href={`#${s.id}`}
-                    className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-blanc/15 px-4 py-2 text-[13.5px] text-plomb-clair transition-colors duration-300 hover:border-or hover:bg-or hover:text-noir"
+                    className="inline-flex items-center gap-2 whitespace-nowrap border border-blanc/15 px-4 py-2 text-[13.5px] text-plomb-clair transition-colors duration-300 hover:border-blanc hover:bg-blanc hover:text-noir"
                   >
                     <span className="tnum text-[11px] text-plomb-clair">
                       {String(i + 1).padStart(2, "0")}
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                 <Reveal>
                   <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
                     <div>
-                      <span className="tnum text-[12px] text-or">
+                      <span className="tnum text-[12px] text-blanc">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h2 className="h-section mt-3 max-w-[16ch] text-[clamp(1.6rem,3vw,2.3rem)] text-blanc">
@@ -106,7 +106,7 @@ export default function ServicesPage() {
                           >
                             <span
                               aria-hidden="true"
-                              className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-or"
+                              className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-blanc"
                             />
                             {item}
                           </li>
@@ -122,7 +122,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Renvoi vers les pages métier */}
-      <section className="bg-anthracite/45 py-20 lg:py-24">
+      <section className="bg-graphite/45 py-20 lg:py-24">
         <Container>
           <Reveal>
             <SectionHead
@@ -136,7 +136,7 @@ export default function ServicesPage() {
               <Reveal key={v.slug} delay={i * 0.05}>
                 <Link
                   href={`/solutions/${v.slug}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-blanc/20 bg-noir px-5 py-3 text-[14px] text-blanc transition-colors duration-300 hover:border-or hover:bg-or hover:text-noir"
+                  className="inline-flex items-center gap-2 border border-blanc/20 bg-noir px-5 py-3 text-[14px] text-blanc transition-colors duration-300 hover:border-blanc hover:bg-blanc hover:text-noir"
                 >
                   {v.navLabel}
                   <ArrowIcon />
@@ -150,8 +150,8 @@ export default function ServicesPage() {
       <section className="py-20 lg:py-24">
         <Container>
           <Reveal>
-            <div className="grain relative overflow-hidden rounded-3xl bg-noir px-7 py-14 sm:px-12">
-              <h2 className="h-display max-w-[22ch] text-[clamp(1.7rem,3.6vw,2.7rem)] text-blanc">
+            <div className="grain relative overflow-hidden bg-noir px-7 py-14 sm:px-12">
+              <h2 className="h-display max-w-[20ch] text-[clamp(2rem,4.4vw,3.75rem)] text-blanc">
                 Un diagnostic avant tout devis.
               </h2>
               <p className="mt-5 max-w-[56ch] text-[15.5px] leading-relaxed text-plomb-clair">

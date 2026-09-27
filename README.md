@@ -114,8 +114,23 @@ Tailwind v4 se configure **en CSS**, pas en `tailwind.config.js`. Les tokens
 sont déclarés dans le bloc `@theme` de `src/app/globals.css` et génèrent leurs
 utilitaires automatiquement.
 
-Palette, typographie (**Plus Jakarta Sans**) et règles de contraste : voir
-**`BRAND.md`**, qui fait référence.
+Charte **noir / blanc** (2026) : palette, typographie (**Inter**), logo,
+boutons, mouvement et règles de contraste — voir **`BRAND.md`**, qui fait
+référence.
+
+### Refonte noir / blanc — ce qui a changé
+
+- Palette : or, halos, trames de particules et traînées supprimés ; noir
+  `#050505`, graphite, gris, blanc cassé `#F4F3EF`. Aucune couleur d'accent.
+- Typographie : Plus Jakarta Sans → Inter ; titres display jusqu'à 132 px.
+- Logo : nouveau symbole à deux obliques (SVG, `currentColor`), favicons et
+  icônes régénérés.
+- Composants : boutons rectangulaires (survol par inversion), angles droits,
+  filets d'un pixel, header allégé (« Studio », CTA « Parler de votre
+  projet »).
+- Hero : six visuels de campagne noir et blanc ; mouvement 3D atténué, sans
+  particules.
+- Photos métier passées en noir et blanc (`.photo-nb`).
 
 ---
 
@@ -132,10 +147,11 @@ IA — chacune avec un visuel, un titre et une courte description.
   du site reprend après la sixième étape.
 - **Contenu :** `etapesHero` dans `src/lib/content.ts`. Tout le texte est du
   HTML rendu côté serveur (indexable, lisible sans JavaScript).
-- **Visuels :** `public/hero/*.webp`, compositions de démonstration fournies
-  par STAR DIGI PRO. Seule la partie visuelle est conservée, bords fondus en
-  transparence pour se mêler au fond de la scène. Pour en remplacer un, gardez
-  un fond sombre et un format paysage (~1200 × 820 px).
+- **Visuels :** `public/hero/*.webp`, campagne noir et blanc fournie par
+  STAR DIGI PRO (sources PNG 1586 × 992). Converties en WebP 1440 × 900
+  (50–100 Ko), niveaux de gris, bords fondus en transparence pour se mêler au
+  noir de la scène. Pour en remplacer un : format 16:10, fond sombre, aucun
+  texte dans l'image.
 - **Performance :** three.js (~850 Ko non compressés) n'est chargé qu'à la
   première interaction (défilement, souris, doigt, clavier). Le premier
   affichage n'en dépend pas ; le rendu s'arrête quand le hero sort de l'écran.
@@ -181,7 +197,7 @@ Ces modules sont étiquetés « Démonstration » partout où ils apparaissent.
   attendre l'hydratation. `Reveal` reste réservé au contenu sous la ligne de
   flottaison.
 - Image de partage 1200×630 générée au build (`src/app/opengraph-image.tsx`),
-  en Plus Jakarta Sans (`src/assets/fonts/`, licence OFL).
+  en Inter (`src/assets/fonts/`, licence OFL).
 - Les 9 routes sont pré-rendues en statique au build.
 
 ---
@@ -203,10 +219,10 @@ Ces modules sont étiquetés « Démonstration » partout où ils apparaissent.
   | Page | Perf. | Access. | Bonnes pratiques | SEO |
   |---|---|---|---|---|
   | `/` (avec galerie 3D) | 95 | 100 | 100 | 100 |
-  | `/services` | 99 | 100 | 100 | 100 |
+  | `/services` | 98 | 100 | 100 | 100 |
   | `/realisations` | 99 | 100 | 100 | 100 |
-  | `/a-propos` | 100 | 100 | 100 | 100 |
+  | `/a-propos` | 96 | 100 | 100 | 100 |
   | `/contact` | 98 | 100 | 100 | 100 |
-  | `/solutions/restaurants` | 99 | 100 | 100 | 100 |
+  | `/solutions/restaurants` | 98 | 100 | 100 | 100 |
 
 Non vérifié : le rendu sur appareils physiques.

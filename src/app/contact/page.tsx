@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/ui/ContactForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact — demander un audit",
+  title: "Contact — parler de votre projet",
   description:
     "Décrivez votre activité et ce que vous souhaitez améliorer. STAR DIGI PRO vous indique les briques réellement pertinentes. France et Belgique.",
   alternates: { canonical: "/contact" },
@@ -37,8 +37,8 @@ export default function ContactPage() {
               <Eyebrow>Contact</Eyebrow>
             </Entree>
             <Entree delay={0.06}>
-              <h1 className="h-display max-w-[14ch] text-[clamp(2.2rem,4.6vw,3.5rem)] text-blanc">
-                Demander un audit.
+              <h1 className="h-display max-w-[12ch] text-[clamp(2.75rem,6.4vw,6.5rem)] text-blanc">
+                Parler de votre projet.
               </h1>
             </Entree>
             <Entree delay={0.12}>
@@ -55,7 +55,7 @@ export default function ContactPage() {
                     key={e.title}
                     className="flex gap-5 border-b border-blanc/15 py-5"
                   >
-                    <span className="tnum mt-0.5 text-[12px] text-or">
+                    <span className="tnum mt-0.5 text-[12px] text-blanc">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                   <p>
                     <a
                       href={`mailto:${site.contact.email}`}
-                      className="border-b border-blanc/25 pb-0.5 transition-colors duration-300 hover:border-or hover:text-or"
+                      className="border-b border-blanc/25 pb-0.5 transition-colors duration-300 hover:border-blanc hover:text-blanc"
                     >
                       {site.contact.email}
                     </a>
@@ -93,7 +93,7 @@ export default function ContactPage() {
                   <p>
                     <a
                       href={site.contact.phoneHref}
-                      className="border-b border-blanc/25 pb-0.5 transition-colors duration-300 hover:border-or hover:text-or"
+                      className="border-b border-blanc/25 pb-0.5 transition-colors duration-300 hover:border-blanc hover:text-blanc"
                     >
                       {site.contact.phone}
                     </a>
@@ -105,7 +105,7 @@ export default function ContactPage() {
 
           {/* Formulaire */}
           <Entree delay={0.1} className="min-w-0">
-            <div className="min-w-0 rounded-3xl border border-blanc/12 bg-blanc p-7 shadow-[0_28px_70px_-46px_rgba(14,17,22,0.45)] sm:p-9">
+            <div className="min-w-0 bg-casse p-7 sm:p-10">
               <ContactForm />
             </div>
           </Entree>

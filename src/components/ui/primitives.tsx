@@ -12,7 +12,7 @@ export function Container({
 }) {
   return (
     <div
-      className={`mx-auto w-full max-w-[1400px] px-[var(--gutter)] ${className}`}
+      className={`mx-auto w-full max-w-[1440px] px-[var(--gutter)] ${className}`}
     >
       {children}
     </div>
@@ -28,17 +28,15 @@ export function Eyebrow({
   tone = "clair",
 }: {
   children: ReactNode;
-  tone?: "clair" | "sombre" | "or";
+  tone?: "clair" | "sombre" | "accent";
 }) {
   const tones = {
     clair: "text-plomb-clair",
     sombre: "text-plomb",
-    or: "text-or",
+    accent: "text-blanc",
   };
   return (
-    <p
-      className={`mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] ${tones[tone]}`}
-    >
+    <p className={`label mb-6 ${tones[tone]}`}>
       {children}
     </p>
   );
@@ -65,13 +63,13 @@ export function SectionHead({
   const clair = tone === "clair";
   return (
     <div
-      className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"} ${className}`}
+      className={`${align === "center" ? "mx-auto max-w-4xl text-center" : "max-w-4xl"} ${className}`}
     >
       {eyebrow ? (
         <Eyebrow tone={clair ? "clair" : "sombre"}>{eyebrow}</Eyebrow>
       ) : null}
       <h2
-        className={`h-section text-[clamp(1.9rem,4.2vw,3.25rem)] ${
+        className={`h-section text-[clamp(2.2rem,5vw,4.5rem)] ${
           clair ? "text-blanc" : "text-noir"
         }`}
       >
@@ -79,8 +77,8 @@ export function SectionHead({
       </h2>
       {lead ? (
         <p
-          className={`mt-5 text-[clamp(1rem,1.25vw,1.13rem)] leading-relaxed ${
-            clair ? "text-plomb-clair" : "text-anthracite/80"
+          className={`mt-7 max-w-[62ch] text-[clamp(1rem,1.2vw,1.12rem)] leading-relaxed ${
+            clair ? "text-plomb-clair" : "text-plomb"
           }`}
         >
           {lead}
@@ -92,26 +90,30 @@ export function SectionHead({
 
 /* ----------------------------------------------------------------- Button -- */
 
-type ButtonVariant = "primary" | "outline" | "outlineDark" | "ghost";
+type ButtonVariant = "primary" | "outline" | "outlineDark" | "dark" | "ghost";
 
+/* Rectangles nets, sans arrondi : la sobriété d'un objet imprimé. Survol :
+   inversion de couleur et léger déplacement de la flèche, rien de plus. */
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-[0.01em] transition-[background-color,color,border-color,transform] duration-300 ease-[var(--ease-soft)] active:translate-y-px whitespace-nowrap";
+  "group/btn inline-flex items-center justify-center gap-3 font-medium tracking-[-0.005em] transition-[background-color,color,border-color] duration-500 ease-[var(--ease-soft)] whitespace-nowrap [&_svg]:transition-transform [&_svg]:duration-500 hover:[&_svg]:translate-x-1";
 
 const buttonSizes = {
   md: "px-5 py-3 text-[14px]",
-  lg: "px-7 py-4 text-[15px]",
+  lg: "px-7 py-[1.05rem] text-[15px]",
 };
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  /* L'or porte du texte noir — règle de la charte, visible sur l'icône
-     applicative. Du blanc sur or serait illisible. */
-  primary: "bg-or text-noir hover:bg-or-clair",
+  /** Plein blanc, sur fond sombre. */
+  primary:
+    "border border-blanc bg-blanc text-noir hover:bg-transparent hover:text-blanc",
   /** Contour, sur fond sombre. */
   outline:
-    "border border-blanc/25 text-blanc hover:border-or hover:bg-or hover:text-noir",
+    "border border-blanc/30 text-blanc hover:border-blanc hover:bg-blanc hover:text-noir",
   /** Contour, sur fond clair. */
   outlineDark:
-    "border border-noir/25 text-noir hover:border-or hover:bg-or hover:text-noir",
+    "border border-noir/30 text-noir hover:border-noir hover:bg-noir hover:text-blanc",
+  /** Plein noir, sur fond clair. */
+  dark: "border border-noir bg-noir text-blanc hover:bg-transparent hover:text-noir",
   ghost: "text-blanc hover:bg-blanc/10",
 };
 
@@ -157,16 +159,16 @@ export function Pill({
   tone = "clair",
 }: {
   children: ReactNode;
-  tone?: "clair" | "sombre" | "or";
+  tone?: "clair" | "sombre" | "accent";
 }) {
   const tones = {
     clair: "border-blanc/20 text-plomb-clair",
-    sombre: "border-noir/15 text-anthracite",
-    or: "border-or/40 text-or",
+    sombre: "border-noir/20 text-graphite",
+    accent: "border-blanc/50 text-blanc",
   };
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-[12px] tracking-[0.02em] ${tones[tone]}`}
+      className={`inline-flex items-center border px-2.5 py-1 text-[11.5px] tracking-[0.02em] ${tones[tone]}`}
     >
       {children}
     </span>
@@ -183,7 +185,7 @@ export function ArrowIcon({ className = "" }: { className?: string }) {
       className={`h-[14px] w-[14px] ${className}`}
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
+      strokeWidth="1.4"
       strokeLinecap="round"
       strokeLinejoin="round"
     >

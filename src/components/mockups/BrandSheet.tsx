@@ -8,10 +8,10 @@
  */
 export function BrandSheet() {
   const palette = [
-    { hex: "#0E1116", name: "Encre" },
-    { hex: "#3366FF", name: "Signal" },
-    { hex: "#FF8B4A", name: "Braise" },
-    { hex: "#F6F4EF", name: "Papier" },
+    { hex: "#050505", name: "Noir" },
+    { hex: "#1B1B1B", name: "Graphite" },
+    { hex: "#B7B7B7", name: "Gris" },
+    { hex: "#F4F3EF", name: "Cassé" },
   ];
 
   return (
@@ -24,16 +24,16 @@ export function BrandSheet() {
       </div>
 
       {/* Lockup sur fond encre */}
-      <div className="grain relative flex h-40 items-center justify-center bg-noir">
+      <div className="relative flex h-40 items-center justify-center bg-noir">
         <div className="flex flex-col items-center gap-2.5">
           <svg viewBox="0 0 40 40" className="h-9 w-9" aria-hidden="true">
-            <circle cx="20" cy="20" r="18.5" fill="none" stroke="#F6F4EF" strokeWidth="1.2" />
-            <path d="M20 9v22M11 14.5l18 11M29 14.5l-18 11" stroke="#F6F4EF" strokeWidth="1.2" strokeLinecap="round" />
+            <rect x="1" y="1" width="38" height="38" fill="none" stroke="#F4F3EF" strokeWidth="1" />
+            <path d="M12 28 20 12M20 28 28 12" stroke="#F4F3EF" strokeWidth="1.2" />
           </svg>
           <span className="font-[family-name:var(--font-display)] text-[17px] font-semibold tracking-[0.28em] text-blanc">
             VOTRE MARQUE
           </span>
-          <span className="text-[9px] uppercase tracking-[0.42em] text-plomb">
+          <span className="text-[9px] uppercase tracking-[0.42em] text-plomb-clair">
             Depuis 2026
           </span>
         </div>
@@ -59,16 +59,16 @@ export function BrandSheet() {
             Aa
           </span>
           <div className="leading-tight">
-            <p className="text-[11.5px] font-medium text-noir">Space Grotesk</p>
-            <p className="text-[10.5px] text-plomb">Display · 600</p>
+            <p className="text-[11.5px] font-medium text-noir">Inter</p>
+            <p className="text-[10.5px] text-plomb">Display · 650</p>
           </div>
         </div>
 
         <div className="flex justify-end gap-2" aria-hidden="true">
           {/* Déclinaisons : carte de visite, menu, story. */}
-          <div className="h-11 w-16 rounded border border-noir/15 bg-gris-2" />
-          <div className="h-11 w-8 rounded border border-noir/15 bg-gris-2" />
-          <div className="h-11 w-6 rounded border border-noir/15 bg-or-voile" />
+          <div className="h-11 w-16 rounded border border-noir/15 bg-gris-clair" />
+          <div className="h-11 w-8 rounded border border-noir/15 bg-gris-clair" />
+          <div className="h-11 w-6 rounded border border-noir/15 bg-gris-clair" />
         </div>
       </div>
     </div>

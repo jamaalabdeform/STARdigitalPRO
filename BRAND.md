@@ -1,58 +1,61 @@
-# STAR DIGI PRO — kit d'identité et consignes d'intégration
+# STAR DIGI PRO — charte noir / blanc et consignes d'intégration
 
-Ce document est la référence de marque du site. Il traduit la charte fournie
-(« Guide de marque premium Star Digi Pro ») en éléments directement utilisables
-dans le code, et fixe les règles à respecter pour toute page ajoutée ensuite.
+Référence de marque du site. Elle traduit la brand board « STAR DIGI PRO »
+(2026, direction noir / blanc) en éléments directement utilisables dans le code,
+et fixe les règles à respecter pour toute page ajoutée ensuite.
 
-**Source** : `identité visuelle/charte graphique.png` — planche unique, 1536×1024.
+> **Principe.** Le premium ne se démontre pas, il se ressent. Pas d'or, pas de
+> halo, pas de dégradé décoratif, pas de 3D gratuite. La tenue vient de la
+> proportion, de la typographie, de l'espace, du contraste et de la précision.
 
 ---
 
 ## 1. Logo
 
-### Composition
+### Symbole
 
-Le logotype se compose de deux parties, traitées différemment **pour une raison
-technique importante** :
-
-| Partie | Traitement | Pourquoi |
-|---|---|---|
-| Symbole (S doré + étoile) | Image raster `/brand/mark.png` | La charte n'existe qu'en PNG ; le symbole n'y occupe que ~170 px |
-| Logotype « STAR DIGI PRO » | Texte, Plus Jakarta Sans 800 | Net à toute taille, lisible par les moteurs de recherche |
-
-### ⚠ Limite à lever
-
-Le symbole est un **raster de 170 × 140 px**. Il reste net jusqu'à environ
-**85 px d'affichage**. Au-delà, il devient flou.
-
-> **À fournir** : le fichier vectoriel du logo (`.svg`, `.ai` ou `.eps`).
-> Dès réception, remplacer `/public/brand/mark.png` par un `.svg` et adapter
-> `LogoMark` dans `src/components/site/Logo.tsx`. Aucune autre modification
-> ne sera nécessaire.
-
-### Déclinaisons disponibles
-
-| Fichier | Usage |
-|---|---|
-| `/brand/mark.png` | Symbole détouré, **fonds sombres uniquement** |
-| `/brand/icon-dark.png` | Tuile arrondie, or sur noir — favicon, réseaux |
-| `/brand/icon-gold.png` | Tuile arrondie, noir sur or — icône applicative |
-| `/brand/icon-mono.png` | Monochrome sur blanc — impression, fonds clairs |
-| `/brand/apple-touch-icon.png` | 180 × 180 |
-
-Le symbole détouré **ne doit pas** être posé sur un fond or : le détourage laisse
-des halos. Utiliser `icon-gold.png` dans ce cas.
-
-### Composant
+Deux obliques — le passage de la première vue à la première vente,
+l'impulsion, la progression. Dessinable à main levée, lisible à 16 px, sans
+aucun effet. Vectoriel, défini une seule fois :
 
 ```tsx
 import { Logo, LogoMark } from "@/components/site/Logo";
 
-<Logo />                              // sur fond sombre
-<Logo tone="sombre" />                // sur fond clair
-<Logo size="lg" baseline />           // avec la baseline
-<LogoMark size={28} />                // symbole seul
+<Logo />                        // symbole + wordmark, sur fond sombre
+<Logo tone="sombre" />          // sur fond clair
+<Logo size="lg" baseline />     // avec la signature (pied de page)
+<LogoMark className="h-5 w-[30px]" />  // symbole seul, hérite de la couleur
 ```
+
+`LogoMark` utilise `currentColor` : noir, blanc et inversé viennent d'une seule
+source.
+
+### Wordmark
+
+« STAR DIGI » en demi-gras, « PRO » en regular, Inter. La hiérarchie passe par
+la graisse, jamais par la couleur.
+
+### Fichiers
+
+| Fichier | Usage |
+|---|---|
+| `/brand/logo.svg` | Symbole seul, noir, vectoriel |
+| `/brand/favicon.svg` | Tuile noire, symbole blanc cassé |
+| `/brand/favicon.png` | Favicon 96 px |
+| `/brand/apple-touch-icon.png` | Icône iOS 180 px |
+| `/brand/icon-dark.png` | Tuile 512 px, symbole clair sur noir (JSON-LD, réseaux) |
+| `/brand/icon-light.png` | Tuile 512 px, symbole noir sur blanc cassé (fonds clairs, impression) |
+
+### Tailles minimales
+
+16 px (favicon) · 24 px (icône) · 40 px (version compacte) · 80 px (version
+horizontale). Zone de protection : la hauteur d'une oblique sur les quatre
+côtés.
+
+### Interdits
+
+Aucun effet (ombre, lueur, dégradé, 3D). Pas de couleur autre que noir, blanc
+ou blanc cassé. Ne pas déformer les obliques, ni en changer l'angle.
 
 ---
 
@@ -61,154 +64,119 @@ import { Logo, LogoMark } from "@/components/site/Logo";
 Déclarée dans `src/app/globals.css`, bloc `@theme`. Tailwind v4 se configure en
 CSS — **il n'y a pas de `tailwind.config.js`**.
 
-| Token | Valeur | Rôle (charte) | Utilitaires |
+| Token | Valeur | Rôle | Utilitaires |
 |---|---|---|---|
-| `noir` | `#0B0B0D` | Confiance, élégance | `bg-noir` `text-noir` |
-| `anthracite` | `#1F1F24` | Sérénité, professionnalisme | `bg-anthracite` |
-| `blanc` | `#FFFFFF` | Clarté, lisibilité | `text-blanc` |
-| `gris` | `#F5F6F8` | Équilibre, arrière-plan | `bg-gris` |
-| **`or`** | **`#D4AF37`** | **Valeur, premium, croissance** | `text-or` `bg-or` |
-| `or-clair` | `#E8C868` | Survols, reflets | `hover:bg-or-clair` |
-| `or-sombre` | `#80641B` | **Or sur fond clair** | `text-or-sombre` |
-| `bleu` | `#3B82F6` | Digital, technologie | `text-bleu` |
-| `vert` | `#10B981` | Conversion, succès | `text-vert` |
-| `plomb` / `plomb-clair` | `#62676F` / `#9AA0AA` | Textes secondaires : `plomb` sur fond clair, `plomb-clair` sur fond sombre | `text-plomb` `text-plomb-clair` |
+| `noir` | `#050505` | Fond principal | `bg-noir` `text-noir` |
+| `graphite` | `#1B1B1B` | Surfaces sur fond noir | `bg-graphite` |
+| `graphite-2` | `#2A2A2A` | Filets sur fond noir | `border-graphite-2` |
+| `gris-subtil` | `#B7B7B7` | Fragments de titre en retrait | `text-gris-subtil` |
+| `gris-clair` | `#E8E8E8` | Surfaces sur fond clair | `bg-gris-clair` |
+| `casse` | `#F4F3EF` | Blanc cassé — sections claires | `bg-casse` |
+| `blanc` | `#FFFFFF` | Texte sur noir, boutons | `text-blanc` `bg-blanc` |
+| `plomb` | `#5C5C5C` | Texte secondaire **sur fond clair** | `text-plomb` |
+| `plomb-clair` | `#A3A3A3` | Texte secondaire **sur fond sombre** | `text-plomb-clair` |
 
-### Règles de contraste — non négociables
+`vert` (`#1F9D6B`) et `alerte` (`#E5484D`) sont des rôles **fonctionnels**
+(succès, erreur de formulaire), hors identité.
 
-Ces trois règles viennent d'un audit de contraste automatisé qui a relevé
-9 défauts réels lors de la mise en place de la charte :
+**Aucune couleur d'accent.** La charte fonctionne sans. Si un accent est un
+jour ajouté, il reste sous 5 % de la surface et ne devient jamais la marque.
 
-1. **Sur l'or, le texte est NOIR.** Jamais blanc — le blanc sur `#D4AF37`
-   plafonne à 2,1:1. C'est aussi la règle visible sur l'icône applicative.
-2. **Sur fond clair, l'or de texte est `or-sombre`**, pas `or` : l'or pur sur
-   blanc tombe également à 2,1:1.
-3. **L'or pur (`or`) est réservé** aux fonds sombres et aux aplats non textuels
-   (pastilles, filets, points d'état).
-4. **Sur fond sombre, le gris de texte est `plomb-clair`**, jamais `plomb`
-   (3,4:1 sur `noir`). `plomb` est réservé aux fonds clairs, où il tient
-   4,5:1 jusque sur `gris-2`.
+### Proportions
 
-`or-sombre` et `plomb` ont été assombris (depuis `#A8862A` et `#70757E`) après
-un second audit axe : ils passaient sur blanc mais pas sur `gris` / `gris-2`.
+Noir ~70 % · blanc cassé ~20 % (sections de respiration) · gris et blanc pour
+le texte et les filets.
 
-Un script d'audit réutilisable est décrit au § 9.
+### Contrastes — non négociables
+
+1. Sur fond sombre, le texte secondaire est `plomb-clair`, jamais `plomb`.
+2. Sur fond clair, le texte secondaire est `plomb`, jamais `plomb-clair`.
+3. Dans une section claire, un bouton plein est `variant="dark"`, jamais
+   `primary` (blanc sur blanc cassé).
+
+Tous deux tiennent 4,5:1 jusque sur `graphite` et `gris-clair`. Vérifié par
+axe-core sur les 10 routes (§ 9).
 
 ---
 
 ## 3. Typographie
 
-**Plus Jakarta Sans**, imposée par la charte. Chargée par `next/font/google`
-dans `src/app/layout.tsx` — servie en local, aucune requête vers un tiers.
+**Inter** (police variable), alternative libre à Suisse Int'l retenue par la
+charte. Chargée par `next/font/google` dans `src/app/layout.tsx` : servie en
+local, aucune requête vers un tiers.
 
-| Classe | Usage | Graisse |
+| Rôle | Classe / style | Taille indicative |
 |---|---|---|
-| `.h-display` | Titres de page (h1) | 800 |
-| `.h-section` | Titres de section (h2, h3) | 700 |
-| *(défaut)* | Texte courant | 400 |
-| `.tnum` | Chiffres alignés (prix, dates, pipelines) | — |
-| `.mot-or` | Met un fragment de titre en or | — |
+| Display | `.h-display` — 600, approche −0,05 em, interligne 0,94 | `clamp(2.6rem, 7vw, 8.25rem)` |
+| Heading | `.h-section` — 600, approche −0,04 em | `clamp(2.2rem, 5vw, 4.5rem)` |
+| Title | 500–600, approche −0,02 em | 19–26 px |
+| Body | 400, interligne 1,6 | 16–18 px |
+| Caption | 400, `plomb` / `plomb-clair` | 12,5–14 px |
+| Label | `.label` — 500, capitales, +0,18 em | 11 px |
 
-### Principe d'accentuation
-
-Le logotype met « PRO » en or. On applique la même logique aux titres : **un
-seul fragment en or par titre**, celui qui porte le sens.
-
-```tsx
-<h1 className="h-display">
-  De la première vue<br />à la <span className="mot-or">première vente.</span>
-</h1>
-```
+`.mot-accent` met un fragment de titre en retrait (`gris-subtil` sur fond
+sombre, `plomb` sur fond clair), comme « PRO » dans le wordmark.
 
 ---
 
 ## 4. Iconographie
 
-`src/components/brand/Icons.tsx` — trait de 1,4 px, extrémités arrondies,
-grille 24 × 24, couleur héritée (`currentColor`).
-
-**Prestations** : `branding` `web` `ecommerce` `reservation` `crm`
-`automatisation` `ia` `reseaux` `acquisition` `fidelisation`
-
-**Secteurs** : `restaurants` `barbers` `beaute` `automobile` `commerce`
+`src/components/brand/Icons.tsx` — trait de 1,4 px, grille 24 × 24, couleur
+héritée (`currentColor`), noir ou blanc uniquement. Les icônes servent
+l'interface, elles ne décorent pas.
 
 ```tsx
 import { BrandIcon, iconeParService } from "@/components/brand/Icons";
 
-<BrandIcon name="crm" className="h-7 w-7 text-or" />
-<BrandIcon name={iconeParService["web"]} className="h-6 w-6 text-or" />
+<BrandIcon name="crm" className="h-6 w-6 text-blanc" />
 ```
 
-Deux tables de correspondance évitent de recâbler les icônes à la main :
-`iconeParService` (les 6 briques) et `iconeParVerticale` (les 4 métiers).
+---
+
+## 5. Motifs
+
+`src/components/brand/Motifs.tsx` — volontairement réduit :
+
+- `Oblique` : une oblique du symbole, en séparateur ou en repère ;
+- `Filet` : filet d'un pixel ;
+- `Pastille` : cadre carré au trait fin, pour porter une icône.
+
+Classes CSS : `.filet`, `.carte-ligne` (filet supérieur qui se dessine au
+survol), `.grain` (grain photographique très léger, grands aplats noirs
+seulement), `.photo-nb` (passe une photo en noir et blanc).
+
+Supprimés avec l'ancienne charte : halos, trames de particules, traînées
+dorées, liserés or.
 
 ---
 
-## 5. Motifs graphiques
+## 6. Direction image
 
-`src/components/brand/Motifs.tsx` — **tous en vectoriel**, redessinés plutôt
-qu'extraits de la planche : nets à toute taille, quelques centaines d'octets.
+- **Noir et blanc**, contrasté, cinématographique, grain léger.
+- Documentaire premium : gestes métier, matières, architectures, objets.
+- Jamais de sourire publicitaire face caméra, jamais de photo générique de
+  bureau.
+- Les six visuels du hero (`public/hero/`) forment une campagne : même
+  lumière, même contraste, même profondeur. Ils ne contiennent aucun titre —
+  les textes sont en HTML.
 
-| Composant | Effet |
-|---|---|
-| `<Sparkle />` | Étoile à 4 branches du symbole |
-| `<HaloOr />` | Halo doré diffus, derrière un bloc |
-| `<TrameOr />` | Champ de particules dorées, en fondu |
-| `<TraineeOr />` | Traînée lumineuse dorée |
-| `<FiletOr />` | Séparateur horizontal qui s'éteint sur les bords |
-| `<PastilleOr />` | Pastille ronde cerclée d'or, pour une icône |
-
-Classe utilitaire `carte-or` : liseré doré sur le bord supérieur au survol.
-
-### Dosage
-
-Un halo **ou** une traînée par section, jamais les deux à pleine intensité.
-Les motifs accompagnent, ils ne décorent pas pour eux-mêmes.
+Pour remplacer un visuel du hero : format 16:10, fond sombre, puis conversion
+en WebP 1440 × 900 avec bords fondus en transparence (voir README).
 
 ---
 
-## 6. Direction photo et vidéo
+## 7. Mouvement
 
-Déduite des visuels sectoriels de la charte.
+Lent · précis · fluide · architectural.
 
-**Traitement** — fonds sombres dominants, éclairage chaud et directionnel,
-sources lumineuses dorées visibles dans le cadre (ampoules, bougies, reflets),
-faible profondeur de champ, contraste marqué, noirs profonds non déboussés.
-
-**Cadrage** — plans d'ambiance plutôt que plans produits détourés. Les personnes
-apparaissent de profil, de dos ou en action ; le sujet reste le lieu et le geste.
-
-**À proscrire** — banque d'images générique sur fond blanc, lumière neutre de
-bureau, sourires face caméra, teintes froides, aplats bleutés de type SaaS.
-
-**Intégration** — toujours sous un voile sombre
-(`bg-gradient-to-t from-noir via-noir/85 to-noir/35`) et à `opacity-30` à `45`,
-pour que la typographie reste lisible par-dessus.
-
-### ⚠ Images actuelles = provisoires
-
-`/public/verticals/*.jpg` proviennent de **vignettes de la charte** (360 px de
-large à la source, recadrées au-dessus des libellés incrustés). Elles donnent la
-direction, **ce ne sont pas des visuels de production**. À remplacer par de
-vraies photographies au format 2:1, 1600 px de large minimum.
-
----
-
-## 7. Assets par verticale
-
-| Secteur | Accroche officielle | Photo | Icône |
-|---|---|---|---|
-| Restaurants | De la première envie à la réservation. | `/verticals/restaurants.jpg` | `restaurants` |
-| Barbers | Une image forte. Un planning rempli. | `/verticals/barbers.jpg` | `barbers` |
-| Beauté | Votre expérience commence avant le rendez-vous. | `/verticals/beaute.jpg` | `beaute` |
-| Automobile | Une image à la hauteur de ce que vous vendez. | `/verticals/automobile.jpg` | `automobile` |
-
-Les accroches sont **celles de la charte, mot pour mot**. Ne pas les réécrire.
-
-```tsx
-import { universVerticale } from "@/lib/content";
-const { photo, accroche } = universVerticale["barbers"];
-```
+- **Autorisé** : fondu, révélation par masque, translation courte, échelle très
+  faible, `clip-path`.
+- **Interdit** : rebond, lueur, rotation gratuite, particules, animation
+  permanente.
+- Courbe unique : `--ease-soft` (`cubic-bezier(0.22, 1, 0.36, 1)`), durées
+  0,5–0,9 s.
+- `prefers-reduced-motion` neutralise tout, y compris la galerie 3D (qui passe
+  en mode statique).
 
 ---
 
@@ -216,7 +184,7 @@ const { photo, accroche } = universVerticale["barbers"];
 
 ### Ajouter une section
 
-Le site est **à dominante sombre**. Une section sans fond hérite de `noir`.
+Le site est **à dominante noire**. Une section sans fond hérite de `noir`.
 
 ```tsx
 {/* Section sombre — le cas courant */}
@@ -234,41 +202,43 @@ Le site est **à dominante sombre**. Une section sans fond hérite de `noir`.
 </section>
 ```
 
-`tone` décrit **la couleur du texte**, pas celle du fond :
-`clair` = texte clair sur fond sombre (défaut), `sombre` = l'inverse.
-Les composants `Eyebrow`, `SectionHead`, `Pill`, `Faq` et `Logo` suivent tous
-cette convention.
+`tone` décrit **la couleur du texte**, pas celle du fond : `clair` = texte
+clair sur fond sombre (défaut), `sombre` = l'inverse.
 
 ### Boutons
 
+Rectangles nets, sans arrondi. Survol : inversion de couleur et léger
+déplacement de la flèche.
+
 | Variante | Contexte |
 |---|---|
-| `primary` *(défaut)* | Or, texte noir — action principale |
+| `primary` *(défaut)* | Plein blanc, **sur fond sombre** — action principale |
 | `outline` | Contour clair, **sur fond sombre** |
+| `dark` | Plein noir, **sur fond clair** |
 | `outlineDark` | Contour sombre, **sur fond clair** |
 | `ghost` | Sans fond |
 
 ⚠ Ne jamais poser `hidden` directement sur `<Button>` : le composant applique
-déjà `inline-flex`, et à spécificité égale c'est l'ordre dans la feuille qui
-tranche. Envelopper : `<span className="hidden sm:contents"><Button …/></span>`.
+déjà `inline-flex`. Envelopper : `<span className="hidden sm:contents">…</span>`.
 
 ### Cartes
 
+Peu de cartes : préférer la typographie, les filets et l'espace. Quand une
+carte est nécessaire : angles droits, filet d'un pixel, pas d'ombre.
+
 ```tsx
-<div className="carte-or rounded-2xl border border-blanc/12 bg-anthracite/60 p-7">
+<div className="carte-ligne border border-blanc/12 p-7">
 ```
 
 ### Maquettes d'interface
 
-Les modules de `src/components/mockups/` sont des **cartes claires**, y compris
-sur fond sombre — c'est le traitement de la charte elle-même. Ne pas les
-inverser. Y appliquer les règles de contraste du § 2 (or sombre sur blanc, noir
-sur or).
+Les modules de `src/components/mockups/` sont des démonstrations d'interface,
+en noir et blanc. Ils gardent de légers arrondis (ce sont des écrans), mais
+aucune couleur d'accent : sélection et actions en noir.
 
 ### Règles de fond
 
-- Aucun faux client, faux témoignage ou chiffre inventé. Les cartes de
-  démonstration portent un secteur et une ville, jamais un nom d'entreprise.
+- Aucun faux client, faux témoignage ou chiffre inventé.
 - Tout module de démonstration porte une pastille « Démo ».
 - Les coordonnées absentes restent `null` dans `src/lib/site.ts` et
   l'interface les masque — ne jamais inventer un numéro pour « remplir ».
@@ -278,24 +248,15 @@ sur or).
 ## 9. Vérifier une modification
 
 ```bash
-npx next build                  # types + 9 routes
+npx next build
 npx eslint src --max-warnings=0
 ```
 
-### Audit de contraste
-
-Le passage à la charte a introduit 9 défauts de contraste invisibles à l'œil nu,
-tous détectés par mesure. Après toute modification de couleurs, rejouer l'audit :
-ouvrir chaque page, parcourir les éléments porteurs de texte, comparer la
-couleur calculée du texte au premier fond opaque de la chaîne d'ancêtres, et
-signaler tout rapport inférieur à 3:1.
-
-### Responsive
-
-Tester **375 / 430 / 768 / 1024 / 1440 px**. Attention : `body` porte
-`overflow-x: hidden`, donc `scrollWidth - clientWidth` vaut toujours 0 et **ne
-détecte aucun débordement**. Mesurer les rectangles des éléments à la place, en
-excluant ceux placés dans un conteneur `overflow-x: auto`.
+- **Contrastes** : après toute modification de couleurs, rejouer axe-core sur
+  toutes les routes, à 390 et 1440 px.
+- **Responsive** : tester 375 / 430 / 768 / 1024 / 1440 px. `body` porte
+  `overflow-x: hidden` : mesurer les rectangles des éléments plutôt que
+  `scrollWidth`.
 
 ---
 
@@ -303,8 +264,7 @@ excluant ceux placés dans un conteneur `overflow-x: auto`.
 
 | Élément | Impact |
 |---|---|
-| **Logo vectoriel** (`.svg` / `.ai`) | Débloque le logo net au-delà de 85 px |
-| **Photographies réelles** par secteur | Remplace les vignettes de la charte |
+| **Photographies réelles** par secteur | Les vignettes actuelles sont petites (720 × 188), passées en noir et blanc |
 | **Coordonnées** (e-mail, téléphone, adresse) | Actuellement masquées faute de données |
 | **Destination du formulaire** (`CONTACT_WEBHOOK_URL`) | Le formulaire annonce qu'il n'est pas relié |
 | **Identifiants analytics** | Aucun script posé, pas d'ID fictif |

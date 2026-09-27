@@ -40,7 +40,7 @@ export function BookingWidget() {
               className={`flex flex-1 flex-col items-center rounded-lg py-2 ${
                 i === 2
                   ? "bg-noir text-blanc"
-                  : "border border-noir/10 text-anthracite"
+                  : "border border-noir/10 text-graphite"
               }`}
             >
               <span className="text-[9.5px] uppercase tracking-[0.12em] opacity-70">
@@ -60,7 +60,7 @@ export function BookingWidget() {
                 !s.free
                   ? "border border-noir/8 text-plomb line-through"
                   : i === 3
-                    ? "bg-or text-noir"
+                    ? "bg-noir text-blanc"
                     : "border border-noir/15 text-noir"
               }`}
             >
@@ -70,7 +70,7 @@ export function BookingWidget() {
         </div>
 
         <div className="border-t border-noir/10 px-4 py-3">
-          <div className="rounded-lg bg-or py-2.5 text-center text-[12.5px] font-semibold text-noir">
+          <div className="rounded-lg bg-noir py-2.5 text-center text-[12.5px] font-semibold text-blanc">
             Confirmer 13:45
           </div>
           <p className="mt-2 text-center text-[10.5px] text-plomb">
@@ -80,7 +80,7 @@ export function BookingWidget() {
       </div>
 
       {/* Fil de confirmation */}
-      <div className="w-full rounded-2xl border border-noir/12 bg-gris-2 p-3.5 sm:max-w-[240px]">
+      <div className="w-full rounded-2xl border border-noir/12 bg-gris-clair p-3.5 sm:max-w-[240px]">
         <p className="mb-3 text-[10.5px] font-medium uppercase tracking-[0.2em] text-plomb">
           Rappel automatique
         </p>

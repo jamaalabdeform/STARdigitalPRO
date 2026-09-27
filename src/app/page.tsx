@@ -11,11 +11,9 @@ import {
 import { Reveal } from "@/components/ui/Reveal";
 import { Faq } from "@/components/ui/Faq";
 import {
-  Sparkle,
-  HaloOr,
-  TrameOr,
-  FiletOr,
-  PastilleOr,
+  Oblique,
+  Filet,
+  Pastille,
 } from "@/components/brand/Motifs";
 import { BrandIcon, iconeParService } from "@/components/brand/Icons";
 import { HeroGalerie } from "@/components/hero/HeroGalerie";
@@ -49,7 +47,7 @@ export default function Home() {
       {/* Galerie 3D : présentation puis les six étapes, avant le reste du site. */}
       <HeroGalerie />
 
-      <FiletOr />
+      <Filet />
 
       {/* ══════════════════════════════════════════════════ 2. OFFRE 360° ═══ */}
       <section className="py-20 lg:py-28">
@@ -62,17 +60,17 @@ export default function Home() {
             />
           </Reveal>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-blanc/12 bg-blanc/10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-px overflow-hidden border border-blanc/12 bg-blanc/10 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.id} delay={i * 0.05}>
                 <Link
                   href={`/services#${s.id}`}
-                  className="carte-or group flex h-full flex-col bg-noir p-7 transition-colors duration-500 hover:bg-anthracite"
+                  className="carte-ligne group flex h-full flex-col bg-noir p-7 transition-colors duration-500 hover:bg-graphite"
                 >
                   <div className="flex items-start justify-between">
                     <BrandIcon
                       name={iconeParService[s.id]}
-                      className="h-7 w-7 text-or"
+                      className="h-7 w-7 text-blanc"
                     />
                     <span className="tnum text-[11px] text-plomb-clair">
                       {String(i + 1).padStart(2, "0")}
@@ -80,7 +78,7 @@ export default function Home() {
                   </div>
                   <h3 className="h-section mt-6 flex items-center gap-2 text-[19px] text-blanc">
                     {s.label}
-                    <ArrowIcon className="text-or opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <ArrowIcon className="text-blanc opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </h3>
                   <p className="mt-3 text-[14.5px] leading-relaxed text-plomb-clair">
                     {s.short}
@@ -110,24 +108,24 @@ export default function Home() {
                 <Reveal key={v.slug} delay={i * 0.06}>
                   <Link
                     href={`/solutions/${v.slug}`}
-                    className="group relative flex h-full flex-col justify-end overflow-hidden rounded-2xl border border-blanc/12 transition-[border-color,transform] duration-500 ease-[var(--ease-soft)] hover:-translate-y-0.5 hover:border-or/45"
+                    className="group relative flex h-full flex-col justify-end overflow-hidden border border-blanc/12 transition-[border-color] duration-500 ease-[var(--ease-soft)] hover:border-blanc/45"
                   >
                     <Image
                       src={univers.photo}
                       alt=""
                       width={720}
                       height={188}
-                      className="absolute inset-0 h-full w-full object-cover opacity-45 transition-[opacity,transform] duration-700 ease-[var(--ease-soft)] group-hover:scale-[1.04] group-hover:opacity-60"
+                      className="photo-nb absolute inset-0 h-full w-full object-cover opacity-60 transition-[opacity,transform] duration-1000 ease-[var(--ease-soft)] group-hover:scale-[1.03] group-hover:opacity-80"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-noir via-noir/85 to-noir/35"
+                      className="absolute inset-0 bg-gradient-to-t from-noir via-noir/75 to-noir/10"
                     />
 
                     <div className="relative flex items-start gap-4 p-7 sm:p-8">
-                      <PastilleOr>
+                      <Pastille>
                         <BrandIcon name={v.slug} className="h-6 w-6" />
-                      </PastilleOr>
+                      </Pastille>
                       <div>
                         <h3 className="h-section text-[clamp(1.35rem,2.3vw,1.75rem)] text-blanc">
                           {v.navLabel}
@@ -135,7 +133,7 @@ export default function Home() {
                         <p className="mt-2 max-w-[34ch] text-[14.5px] leading-relaxed text-plomb-clair">
                           {v.teaser}
                         </p>
-                        <span className="mt-4 inline-flex items-center gap-2 text-[13.5px] font-semibold text-or">
+                        <span className="mt-4 inline-flex items-center gap-2 text-[13.5px] font-semibold text-blanc">
                           Voir la solution
                           <ArrowIcon className="transition-transform duration-500 ease-[var(--ease-soft)] group-hover:translate-x-1" />
                         </span>
@@ -181,8 +179,8 @@ export default function Home() {
                         data-n={act.n}
                         className="tnum h-section text-[clamp(2.4rem,5vw,3.4rem)] text-noir/12 before:content-[attr(data-n)]"
                       />
-                      <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-or-sombre">
-                        <Sparkle className="h-3 w-2.5" />
+                      <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-noir">
+                        <Oblique className="h-3 w-2" />
                         {act.eyebrow}
                       </span>
                     </div>
@@ -191,7 +189,7 @@ export default function Home() {
                       {act.title}
                     </h3>
 
-                    <p className="mt-5 max-w-[50ch] text-[15.5px] leading-relaxed text-anthracite/80">
+                    <p className="mt-5 max-w-[50ch] text-[15.5px] leading-relaxed text-graphite/80">
                       {act.body}
                     </p>
 
@@ -223,7 +221,6 @@ export default function Home() {
 
       {/* ═══════════════════════════════════════════════ 5. RÉALISATIONS ═══ */}
       <section className="relative overflow-hidden py-20 lg:py-28">
-        <HaloOr className="-right-32 top-1/4" size={520} />
         <Container className="relative">
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-6">
@@ -279,7 +276,7 @@ export default function Home() {
             />
           </Reveal>
 
-          <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-blanc/12 bg-blanc/10 md:grid-cols-5">
+          <ol className="mt-14 grid gap-px overflow-hidden border border-blanc/12 bg-blanc/10 md:grid-cols-5">
             {method.map((m, i) => (
               <Reveal
                 key={m.n}
@@ -287,7 +284,7 @@ export default function Home() {
                 delay={i * 0.05}
                 className="flex h-full flex-col bg-noir p-6"
               >
-                  <span className="tnum text-[11px] font-semibold text-or">
+                  <span className="tnum text-[11px] font-semibold text-blanc">
                     {m.n}
                   </span>
                   <h3 className="h-section mt-3 text-[17px] text-blanc">
@@ -324,12 +321,10 @@ export default function Home() {
       <section className="py-20 lg:py-28">
         <Container>
           <Reveal>
-            <div className="grain relative overflow-hidden rounded-3xl border border-or/30 bg-anthracite px-7 py-16 text-center sm:px-12 lg:py-20">
-              <TrameOr />
-              <HaloOr className="left-1/2 top-0 -translate-x-1/2" size={560} />
+            <div className="grain relative overflow-hidden border border-blanc/30 bg-graphite px-7 py-16 text-center sm:px-12 lg:py-20">
               <div className="relative">
-                <Sparkle className="mx-auto mb-7 h-9 w-7 text-or" />
-                <h2 className="h-display mx-auto max-w-[20ch] text-[clamp(1.9rem,4.4vw,3.3rem)] text-blanc">
+                <Oblique className="mx-auto mb-8 h-8 w-5 text-blanc" />
+                <h2 className="h-display mx-auto max-w-[18ch] text-[clamp(2.4rem,5.6vw,5.25rem)] text-blanc">
                   Et si votre digital travaillait réellement pour votre
                   entreprise ?
                 </h2>
@@ -371,10 +366,10 @@ function DemoCard({
   body: string;
 }) {
   return (
-    <div className="carte-or flex h-full flex-col rounded-2xl border border-blanc/12 bg-anthracite/60 p-7">
+    <div className="carte-ligne flex h-full flex-col border border-blanc/12 bg-graphite/60 p-7">
       <div className="flex items-center justify-between">
-        <BrandIcon name={icon} className="h-6 w-6 text-or" />
-        <Pill tone="or">Démo</Pill>
+        <BrandIcon name={icon} className="h-6 w-6 text-blanc" />
+        <Pill tone="accent">Démo</Pill>
       </div>
       <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-plomb-clair">
         {meta}

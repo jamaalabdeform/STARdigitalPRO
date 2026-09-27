@@ -11,10 +11,10 @@ export function PhoneSite() {
     <div className="flex items-end gap-5">
       {/* --------------------------------------------------------- Téléphone */}
       <div className="relative w-[212px] shrink-0 rounded-[30px] border border-noir/15 bg-noir p-[7px] shadow-[0_30px_70px_-34px_rgba(14,17,22,0.6)]">
-        <div className="absolute left-1/2 top-[14px] z-10 h-[5px] w-[54px] -translate-x-1/2 rounded-full bg-gris/25" />
-        <div className="overflow-hidden rounded-[24px] bg-gris">
+        <div className="absolute left-1/2 top-[14px] z-10 h-[5px] w-[54px] -translate-x-1/2 rounded-full bg-casse/25" />
+        <div className="overflow-hidden rounded-[24px] bg-casse">
           {/* Hero du site */}
-          <div className="grain relative h-[150px] bg-anthracite px-4 pb-4 pt-9">
+          <div className="grain relative h-[150px] bg-graphite px-4 pb-4 pt-9">
             <div className="flex h-full flex-col justify-end">
               <p className="text-[8px] uppercase tracking-[0.26em] text-plomb-clair">
                 Ouvert aujourd&apos;hui
@@ -24,7 +24,7 @@ export function PhoneSite() {
                 <br />
                 en 30 secondes
               </p>
-              <div className="mt-2.5 w-fit rounded-full bg-or px-3 py-1.5 text-[9px] font-semibold text-noir">
+              <div className="mt-2.5 w-fit rounded-full bg-blanc px-3 py-1.5 text-[9px] font-semibold text-noir">
                 Prendre rendez-vous
               </div>
             </div>
@@ -42,9 +42,9 @@ export function PhoneSite() {
               </div>
             ))}
             <div className="flex gap-1.5 pt-1">
-              <div className="h-9 flex-1 rounded bg-gris-2" />
-              <div className="h-9 flex-1 rounded bg-gris-2" />
-              <div className="h-9 flex-1 rounded bg-gris-2" />
+              <div className="h-9 flex-1 rounded bg-gris-clair" />
+              <div className="h-9 flex-1 rounded bg-gris-clair" />
+              <div className="h-9 flex-1 rounded bg-gris-clair" />
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ export function PhoneSite() {
       {/* --------------------------------------------- Fiche recherche locale */}
       <div className="hidden w-[244px] rounded-xl border border-noir/12 bg-blanc p-4 shadow-[0_18px_44px_-28px_rgba(14,17,22,0.4)] sm:block">
         <div className="flex items-start gap-3">
-          <div className="h-10 w-10 shrink-0 rounded-lg bg-gris-2" aria-hidden="true" />
+          <div className="h-10 w-10 shrink-0 rounded-lg bg-gris-clair" aria-hidden="true" />
           <div className="min-w-0">
             <p className="truncate text-[12.5px] font-medium text-noir">
               Salon de coiffure · Mons
@@ -62,7 +62,7 @@ export function PhoneSite() {
               <span className="tnum text-[11px] font-medium text-noir">4,9</span>
               <span className="flex gap-[1px]" aria-hidden="true">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} viewBox="0 0 10 10" className="h-2.5 w-2.5 fill-or">
+                  <svg key={i} viewBox="0 0 10 10" className="h-2.5 w-2.5 fill-noir">
                     <path d="M5 0l1.3 3.2L9.8 3.6 7.2 5.9l.8 3.5L5 7.6 2 9.4l.8-3.5L.2 3.6l3.5-.4z" />
                   </svg>
                 ))}
@@ -78,8 +78,8 @@ export function PhoneSite() {
               key={a}
               className={`rounded-md py-1.5 text-center text-[9.5px] ${
                 i === 2
-                  ? "bg-or text-noir"
-                  : "border border-noir/12 text-anthracite"
+                  ? "bg-noir text-blanc"
+                  : "border border-noir/12 text-graphite"
               }`}
             >
               {a}
@@ -109,7 +109,7 @@ function Row({
     <div className="flex items-center justify-between">
       <span className="text-[10px] text-plomb">{label}</span>
       <span
-        className={`tnum text-[10px] ${accent ? "text-or-sombre" : "text-noir"}`}
+        className={`tnum text-[10px] ${accent ? "text-noir" : "text-noir"}`}
       >
         {value}
       </span>

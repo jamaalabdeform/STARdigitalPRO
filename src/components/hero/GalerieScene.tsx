@@ -16,7 +16,8 @@ import * as THREE from "three";
  *
  * Adaptée du modèle « 3D Gallery Photography » (v0) : plans d'images disposés
  * en profondeur, flou selon la distance, et léger effet de tissu qui ondule
- * avec la vitesse de défilement.
+ * avec la vitesse de défilement — volontairement atténué : le mouvement
+ * doit rester lent, précis, architectural.
  *
  * Différence de fond avec le modèle : la caméra n'intercepte pas la molette.
  * Elle suit le défilement NATIF de la page, lu sur la section parente — le
@@ -41,14 +42,14 @@ const vertexShader = /* glsl */ `
     vec3 pos = position;
 
     // Courbure proportionnelle à la vitesse de défilement (effet tissu).
-    float intensite = force * 0.3;
+    float intensite = force * 0.2;
     float d = length(pos.xy);
     float courbe = d * d * intensite;
     float ride = (sin(pos.x * 2.0 + force * 3.0) * 0.02
                 + sin(pos.y * 2.5 + force * 2.0) * 0.015) * abs(intensite) * 2.0;
 
     // Respiration très lente au repos, pour que la scène ne soit jamais figée.
-    float souffle = sin(pos.x * 1.6 + temps * 0.9) * 0.012;
+    float souffle = sin(pos.x * 1.2 + temps * 0.6) * 0.006;
 
     pos.z -= courbe + ride + souffle;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
@@ -103,43 +104,6 @@ const lisser = (a: number, b: number, t: number) => {
   return x * x * (3 - 2 * x);
 };
 
-/** Poussière dorée le long du trajet de la caméra : donne la profondeur. */
-function Poussiere({ nombre, longueur }: { nombre: number; longueur: number }) {
-  const positions = useMemo(() => {
-    const p = new Float32Array(nombre * 3);
-    // Générateur déterministe : même nuage à chaque rendu.
-    let graine = 7;
-    const alea = () => {
-      graine = (graine * 16807) % 2147483647;
-      return graine / 2147483647;
-    };
-    for (let i = 0; i < nombre; i++) {
-      const angle = alea() * Math.PI * 2;
-      const rayon = 2.2 + alea() * 6;
-      p[i * 3] = Math.cos(angle) * rayon;
-      p[i * 3 + 1] = Math.sin(angle) * rayon * 0.7;
-      p[i * 3 + 2] = ESPACE * 1.5 - alea() * longueur;
-    }
-    return p;
-  }, [nombre, longueur]);
-
-  return (
-    <points>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        color="#d4af37"
-        size={0.035}
-        sizeAttenuation
-        transparent
-        opacity={0.55}
-        depthWrite={false}
-      />
-    </points>
-  );
-}
-
 function Scene({
   visuels,
   sectionRef,
@@ -166,12 +130,12 @@ function Scene({
     const plans = textures.map((tex) => {
       const img = tex.image as HTMLImageElement;
       const ratio = img.width / img.height;
-      const hMax = demiH * (large ? 1.25 : 0.85);
-      const lMax = demiL * (large ? 1.15 : 2);
+      const hMax = demiH * (large ? 1.45 : 1.05);
+      const lMax = demiL * (large ? 1.3 : 2.1);
       const h = Math.min(hMax, lMax / ratio);
       return {
-        x: large ? demiL * 0.5 : 0,
-        y: large ? 0 : demiH * 0.3,
+        x: large ? demiL * 0.42 : 0,
+        y: large ? 0 : demiH * 0.34,
         l: h * ratio,
         h,
       };
@@ -198,9 +162,9 @@ function Scene({
     state.camera.position.z = camZ;
     // Léger roulis selon la vitesse : la caméra « se penche » dans le mouvement.
     state.camera.rotation.z = THREE.MathUtils.clamp(
-      e.vitesse * 0.01,
-      -0.03,
-      0.03,
+      e.vitesse * 0.004,
+      -0.012,
+      0.012,
     );
 
     const temps = state.clock.getElapsedTime();
@@ -212,16 +176,16 @@ function Scene({
       let opacite =
         lisser(ESPACE * 3.2, ESPACE * 2.2, distance) *
         lisser(1.4, FOCALE * 0.8, distance);
-      // Sur mobile, le texte d'introduction occupe tout l'écran : les visuels
-      // n'apparaissent qu'une fois le défilement commencé.
-      if (!disposition.large) opacite *= lisser(0.3, 0.8, e.t);
+      // L'introduction appartient au titre : les visuels n'apparaissent
+      // qu'une fois le défilement commencé.
+      opacite *= lisser(0.3, 0.8, e.t);
       // Net au point focal, flou devant et derrière.
       const ecart = Math.abs(distance - FOCALE);
       const flou = FLOU_MAX * lisser(1.2, ESPACE * 1.4, ecart);
 
       m.uniforms.opacite.value = opacite;
       m.uniforms.flou.value = flou;
-      m.uniforms.force.value = THREE.MathUtils.clamp(e.vitesse * 0.35, -2, 2);
+      m.uniforms.force.value = THREE.MathUtils.clamp(e.vitesse * 0.2, -1.2, 1.2);
       m.uniforms.temps.value = temps + i;
 
       const plan = plans.current[i];
@@ -247,7 +211,6 @@ function Scene({
           </mesh>
         );
       })}
-      <Poussiere nombre={520} longueur={ESPACE * (visuels.length + 2)} />
     </>
   );
 }

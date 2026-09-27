@@ -65,7 +65,7 @@ export function Footer() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-blanc transition-colors duration-300 hover:text-or"
+            className="inline-flex items-center gap-2 text-blanc transition-colors duration-300 hover:text-blanc"
           >
             {site.cta.project}
             <ArrowIcon />
@@ -104,7 +104,7 @@ function FooterLink({
     <li>
       <Link
         href={href}
-        className="text-[14px] text-plomb-clair transition-colors duration-300 hover:text-or"
+        className="text-[14px] text-plomb-clair transition-colors duration-300 hover:text-blanc"
       >
         {children}
       </Link>

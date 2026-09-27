@@ -5,9 +5,7 @@ import { site } from "@/lib/site";
 
 /**
  * Image de partage (Open Graph / X / LinkedIn / WhatsApp), générée au build.
- *
- * Remplace l'icône 192 px utilisée jusqu'ici : déclarée en carte
- * `summary_large_image`, elle était agrandie et floue dans les aperçus.
+ * Charte noir / blanc : symbole, wordmark et signature, rien d'autre.
  * Toutes les pages en héritent, faute d'image propre à leur segment.
  */
 
@@ -15,93 +13,80 @@ export const alt = `${site.name} — ${site.baseline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/* Plus Jakarta Sans, typographie de la charte. Fichiers .woff (le moteur de
-   rendu ne lit pas le woff2), sous-ensemble latin, licence OFL. */
-const font = (weight: 400 | 700 | 800) =>
+/* Inter, typographie de la charte. Fichiers .woff (le moteur de rendu ne lit
+   pas le woff2), sous-ensemble latin, licence OFL. */
+const font = (weight: 400 | 600) =>
   readFile(
-    join(
-      process.cwd(),
-      `src/assets/fonts/plus-jakarta-sans-latin-${weight}-normal.woff`,
-    ),
+    join(process.cwd(), `src/assets/fonts/inter-latin-${weight}-normal.woff`),
   );
 
 export default async function Image() {
-  const [mark, regular, bold, extraBold] = await Promise.all([
-    readFile(join(process.cwd(), "public/brand/mark.png")),
-    font(400),
-    font(700),
-    font(800),
-  ]);
-  const markSrc = `data:image/png;base64,${mark.toString("base64")}`;
+  const [regular, semibold] = await Promise.all([font(400), font(600)]);
 
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "72px 80px",
-          fontFamily: "Jakarta",
-          background:
-            "radial-gradient(circle at 12% 0%, rgba(212,175,55,0.22), transparent 55%), #0b0b0d",
-          color: "#ffffff",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-          <img src={markSrc} alt="" width={85} height={70} />
-          <div
-            style={{
-              display: "flex",
-              fontSize: 34,
-              fontWeight: 700,
-              letterSpacing: "0.14em",
-            }}
-          >
-            STAR DIGI&nbsp;<span style={{ color: "#d4af37" }}>PRO</span>
-          </div>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              fontSize: 82,
-              fontWeight: 800,
-              lineHeight: 1.04,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            <span>De la première vue</span>
-            <span style={{ display: "flex" }}>
-              à la&nbsp;<span style={{ color: "#d4af37" }}>première vente.</span>
-            </span>
-          </div>
-          <div style={{ display: "flex", fontSize: 28, color: "#9aa0aa" }}>
-            {site.domaines.join(" · ")}
-          </div>
-        </div>
-
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "76px 84px",
+        fontFamily: "Inter",
+        background: "#050505",
+        color: "#F4F3EF",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+        <svg width="54" height="36" viewBox="0 0 48 32">
+          <path d="M3 24 12 8h11l-9 16H3Z" fill="#F4F3EF" />
+          <path d="M18 24 27 8h15l-9 16H18Z" fill="#F4F3EF" />
+        </svg>
         <div
           style={{
             display: "flex",
-            height: 2,
-            background:
-              "linear-gradient(90deg, transparent, #d4af37 22%, #d4af37 78%, transparent)",
-            opacity: 0.6,
+            fontSize: 30,
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
           }}
-        />
+        >
+          STAR DIGI&nbsp;<span style={{ fontWeight: 400 }}>PRO</span>
+        </div>
       </div>
-    ),
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontSize: 92,
+          fontWeight: 600,
+          lineHeight: 0.98,
+          letterSpacing: "-0.05em",
+        }}
+      >
+        <span>De la première vue</span>
+        <span style={{ color: "#B7B7B7" }}>à la première vente.</span>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          borderTop: "1px solid #2A2A2A",
+          paddingTop: 26,
+          fontSize: 24,
+          color: "#A3A3A3",
+        }}
+      >
+        <span>Communication. Design. Digital. Automatisation.</span>
+        <span>{site.domain}</span>
+      </div>
+    </div>,
     {
       ...size,
       fonts: [
-        { name: "Jakarta", data: regular, weight: 400, style: "normal" },
-        { name: "Jakarta", data: bold, weight: 700, style: "normal" },
-        { name: "Jakarta", data: extraBold, weight: 800, style: "normal" },
+        { name: "Inter", data: regular, weight: 400, style: "normal" },
+        { name: "Inter", data: semibold, weight: 600, style: "normal" },
       ],
     },
   );

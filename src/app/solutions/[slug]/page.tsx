@@ -18,7 +18,7 @@ import { AutomationFlow } from "@/components/mockups/AutomationFlow";
 import { ChatJawabot } from "@/components/mockups/ChatJawabot";
 import { verticalPages, getVertical, universVerticale } from "@/lib/content";
 import { BrandIcon, type NomSecteur } from "@/components/brand/Icons";
-import { PastilleOr, TrameOr } from "@/components/brand/Motifs";
+import { Pastille } from "@/components/brand/Motifs";
 import { site } from "@/lib/site";
 
 /** Les quatre URL sont connues à l'avance : elles sont générées au build. */
@@ -81,28 +81,27 @@ export default async function VerticalPage({
           />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/55 via-noir/85 to-noir" />
         </div>
-        <TrameOr />
 
         <Container className="relative">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div>
               <Entree>
                 <div className="mb-6 flex items-center gap-4">
-                  <PastilleOr>
+                  <Pastille>
                     <BrandIcon name={vertical.slug as NomSecteur} className="h-6 w-6" />
-                  </PastilleOr>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-or">
+                  </Pastille>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blanc">
                     Solutions · {vertical.label}
                   </span>
                 </div>
               </Entree>
               <Entree delay={0.06}>
-                <h1 className="h-display max-w-[17ch] text-[clamp(2.1rem,4.8vw,3.7rem)] text-blanc">
+                <h1 className="h-display max-w-[15ch] text-[clamp(2.6rem,6vw,6rem)] text-blanc">
                   {vertical.hero}
                 </h1>
               </Entree>
               <Entree delay={0.09}>
-                <p className="mt-4 text-[14px] font-semibold uppercase tracking-[0.14em] text-or-clair">
+                <p className="mt-4 text-[14px] font-semibold uppercase tracking-[0.14em] text-blanc">
                   {univers.accroche}
                 </p>
               </Entree>
@@ -150,7 +149,7 @@ export default async function VerticalPage({
                     key={p}
                     className="flex items-start gap-5 border-b border-blanc/15 py-5"
                   >
-                    <span className="tnum mt-0.5 text-[12px] text-or">
+                    <span className="tnum mt-0.5 text-[12px] text-blanc">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <p className="max-w-[58ch] text-[15.5px] leading-relaxed text-plomb-clair">
@@ -165,7 +164,7 @@ export default async function VerticalPage({
       </section>
 
       {/* Réponses */}
-      <section className="bg-anthracite/45 py-20 lg:py-24">
+      <section className="bg-graphite/45 py-20 lg:py-24">
         <Container>
           <Reveal>
             <SectionHead
@@ -175,11 +174,11 @@ export default async function VerticalPage({
           </Reveal>
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-blanc/12 bg-blanc/10 sm:grid-cols-2">
+            <div className="grid gap-px overflow-hidden border border-blanc/12 bg-blanc/10 sm:grid-cols-2">
               {vertical.solutions.map((s, i) => (
                 <Reveal key={s.title} delay={i * 0.05}>
                   <div className="flex h-full flex-col bg-noir p-6">
-                    <span className="tnum text-[11px] text-or">
+                    <span className="tnum text-[11px] text-blanc">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="h-section mt-3 text-[17px] text-blanc">
@@ -221,8 +220,8 @@ export default async function VerticalPage({
       <section className="pb-24">
         <Container>
           <Reveal>
-            <div className="grain relative overflow-hidden rounded-3xl bg-noir px-7 py-14 sm:px-12">
-              <h2 className="h-display max-w-[20ch] text-[clamp(1.7rem,3.6vw,2.7rem)] text-blanc">
+            <div className="grain relative overflow-hidden bg-noir px-7 py-14 sm:px-12">
+              <h2 className="h-display max-w-[20ch] text-[clamp(2rem,4.4vw,3.75rem)] text-blanc">
                 {vertical.cta}
               </h2>
               <p className="mt-5 max-w-[56ch] text-[15.5px] leading-relaxed text-plomb-clair">
@@ -245,7 +244,7 @@ export default async function VerticalPage({
                     <Link
                       key={o.slug}
                       href={`/solutions/${o.slug}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-blanc/25 px-4 py-2 text-[13.5px] text-blanc transition-colors duration-300 hover:bg-or hover:text-noir"
+                      className="inline-flex items-center gap-2 border border-blanc/25 px-4 py-2 text-[13.5px] text-blanc transition-colors duration-300 hover:bg-blanc hover:text-noir"
                     >
                       {o.navLabel}
                       <ArrowIcon />
