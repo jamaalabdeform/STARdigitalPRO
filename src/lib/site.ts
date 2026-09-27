@@ -43,7 +43,8 @@ export const site = {
     email: null as string | null,
     phone: null as string | null,
     phoneHref: null as string | null,
-    whatsapp: null as string | null,
+    /** Numéro WhatsApp au format international, sans espace. */
+    whatsapp: "+212663827887" as string | null,
     address: null as string | null,
   },
 

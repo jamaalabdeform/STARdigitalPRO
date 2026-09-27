@@ -1,7 +1,8 @@
 "use client";
 
 import { useActionState, useId } from "react";
-import { submitContact, initialContactState } from "@/app/actions";
+import { submitContact } from "@/app/actions";
+import { initialContactState } from "@/lib/contact";
 import { verticals } from "@/lib/site";
 
 const besoins = [

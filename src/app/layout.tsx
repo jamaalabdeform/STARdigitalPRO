@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { site } from "@/lib/site";
 
 /* Inter : alternative libre à Suisse Int'l, retenue par la charte noir / blanc.
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

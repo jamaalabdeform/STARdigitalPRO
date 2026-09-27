@@ -52,23 +52,36 @@ social: { linkedin: null, instagram: null },
 Une fois renseignés, ils apparaissent automatiquement dans le pied de page, la
 page contact et les données structurées.
 
-### 2. Destination du formulaire — `.env.local`
+### 2. Destination du formulaire — e-mail via Resend
 
-```bash
-cp .env.example .env.local
-```
+Les demandes partent par e-mail à **contact@stipway.com** (modifiable via
+`CONTACT_EMAIL_TO`), avec l'adresse du visiteur en « Répondre à ».
 
-```bash
-CONTACT_WEBHOOK_URL=https://...   # Formspree, Make, n8n, route API, CRM…
-```
+1. Créer un compte gratuit sur [resend.com](https://resend.com), puis une clé
+   dans **API Keys**.
+2. La renseigner dans `RESEND_API_KEY` : `.env.local` en local
+   (`cp .env.example .env.local`), ou **Vercel → Project → Settings →
+   Environment Variables** en production, puis redéployer.
 
-Tant que cette variable est absente, le formulaire valide la saisie puis
-**annonce explicitement** qu'il n'est relié à aucune destination. Il n'affiche
-jamais « message envoyé » dans le vide : une demande perdue en silence est le
-pire défaut possible sur une page de contact.
+⚠ Sans domaine vérifié, l'expéditeur de test `onboarding@resend.dev` ne peut
+écrire **qu'à l'adresse du compte Resend**. Soit le compte Resend est créé avec
+contact@stipway.com, soit on vérifie le domaine dans Resend (quelques
+enregistrements DNS) et on renseigne `CONTACT_EMAIL_FROM`, par exemple
+`STAR DIGI PRO <site@stardigipro.com>`.
 
-L'action serveur est dans `src/app/actions.ts` — elle envoie un POST JSON et se
-branche sur n'importe quel service acceptant ce format.
+Alternative : `CONTACT_WEBHOOK_URL` (Make, n8n, CRM…), utilisée seulement si
+`RESEND_API_KEY` est vide. Sans aucune des deux, le formulaire valide la saisie
+puis **annonce explicitement** qu'il n'est relié à aucune destination et
+renvoie vers WhatsApp — il n'affiche jamais « message envoyé » dans le vide.
+
+Code : `src/app/actions.ts` (action serveur) et `src/lib/contact.ts` (types et
+état initial — un fichier « use server » ne peut exporter que des fonctions).
+
+### WhatsApp
+
+Bouton flottant en bas à droite de toutes les pages
+(`src/components/site/WhatsAppButton.tsx`) : lien `wa.me` vers le numéro de
+`site.contact.whatsapp` (`src/lib/site.ts`), avec un message pré-rempli.
 
 ### 3. Analytics
 
