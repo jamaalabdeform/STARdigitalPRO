@@ -325,6 +325,17 @@ body {
   clip-path: inset(50%);
 }
 
+/* Garder l'introduction sous le header et au-dessus de la navigation,
+   sans déplacer la section qui sert de repère à la caméra 3D. */
+@media (min-width: 64rem) and (max-height: 50rem) {
+  .galerie-intro .mt-9 {
+    margin-top: 1.5rem;
+  }
+  .galerie-intro .mt-10,
+  .galerie-intro .galerie-indice {
+    margin-top: 2rem;
+  }
+}
 @keyframes indice {
   0% {
     transform: translateY(-100%);

@@ -161,7 +161,7 @@ export function HeroGalerie() {
       {/* ── Couche défilante : un écran par bloc ─────────────────────────── */}
       <div className="galerie-pistes pointer-events-none relative z-10">
         {/* Introduction */}
-        <div className="galerie-bloc flex items-end pb-[11svh] pt-24 lg:items-center lg:pb-0 lg:pt-0">
+        <div className="galerie-bloc galerie-intro flex items-end pb-[11svh] pt-24 lg:items-center lg:pb-20 lg:pt-24">
           <Container>
             <div className="pointer-events-auto max-w-[62rem]">
               <Entree>
@@ -172,7 +172,7 @@ export function HeroGalerie() {
                 </p>
               </Entree>
               <Entree delay={0.06}>
-                <h1 className="h-display text-[clamp(2.6rem,7vw,8.25rem)] text-blanc">
+                <h1 className="h-display text-[clamp(2.6rem,min(7vw,10svh),8.25rem)] text-blanc">
                   De la première vue
                   <br />
                   <span className="mot-accent">à la première vente.</span>
@@ -225,7 +225,7 @@ export function HeroGalerie() {
             className="galerie-bloc flex items-end pb-[14svh] lg:items-center lg:pb-0"
           >
             <Container>
-              <div className="galerie-texte pointer-events-auto max-w-[36rem]">
+              <div className="galerie-texte pointer-events-auto min-w-0 max-w-[36rem]">
                 {/* L'accent de l'étape porte sur le repère, le filet et le
                     lien — jamais sur le titre, qui reste blanc. */}
                 <p className="label flex items-center gap-4 text-plomb-clair">
@@ -235,7 +235,7 @@ export function HeroGalerie() {
                   <span aria-hidden="true" className="block h-px w-10 bg-accent-texte/70" />
                   <span className="tnum">{total}</span>
                 </p>
-                <h2 className="h-display mt-6 text-[clamp(2.75rem,5.6vw,6.5rem)] text-blanc">
+                <h2 className="h-display mt-6 text-[clamp(2.25rem,5.6vw,5rem)] text-blanc">
                   {e.titre}
                 </h2>
                 <p className="mt-6 text-[clamp(1.2rem,1.7vw,1.55rem)] font-medium leading-snug tracking-[-0.02em] text-blanc">
